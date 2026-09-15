@@ -1,3 +1,4 @@
+
  let all_user_tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     let taskContainer = document.querySelector("#taskContainer");
     let empty_text = document.querySelector(".empty")
@@ -25,6 +26,14 @@ function formatDateTime(dateTime) {
         hour12: true
     });
 }
+
+   function sort_tasks() {
+    all_user_tasks.sort((a, b) => b.completed - a.completed);
+}
+
+sort_tasks();
+
+
 
 function loadTasks(){
   all_user_tasks.forEach(task => {
@@ -90,19 +99,20 @@ function loadTasks(){
         img_que.classList.add("img_que")
         img_que.setAttribute("src" ,"https://www.svgrepo.com/show/308149/waiting-wait-pause-delay.svg")    
 
-        // Restore completed state
-        if (task.completed) {
+   
+       if (task.completed) {
+    user_tasks.classList.add("completed");
+    action.innerHTML = "Completed";
+    action.append(img);
 
-            user_tasks.classList.add("completed");
-            action.innerHTML  ="Completed"
-            action.append(img)
+    taskContainer.append(user_tasks);
+}else {
+    user_tasks.classList.add("Not-completed");
+    action.innerHTML = "In Queue";
+    action.append(img_que);
 
-        }
-        else{
-            action.innerHTML = "In Queue"
-            action.append(img_que)
-        }
-
+        taskContainer.append(user_tasks);
+}
 
         let info_name = document.createElement("div");
 
@@ -142,13 +152,12 @@ function loadTasks(){
         );
 
 
-       taskContainer.append(user_tasks);
 
     });
    
    all_tasks.innerHTML = localStorage.getItem("total_tasks")
    
-   
+ 
 
     // Remove empty message if tasks exist
     if (all_user_tasks.length > 0) {
@@ -177,4 +186,5 @@ function loadTasks(){
 // RUN LOCAL STORAGE LOAD
 // ==========================================================
 
-loadTasks()
+loadTasks();
+
