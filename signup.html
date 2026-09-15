@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Task Board - Sign Up</title>
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* =========================
+           BODY
+        ========================= */
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #f7f8fc;
+            color: #111827;
+
+            padding: 20px;
+
+            transition: 0.3s ease;
+        }
+
+
+        /* =========================
+           SIGNUP CONTAINER
+        ========================= */
+
+        .signup-container {
+            width: 100%;
+            max-width: 450px;
+
+            background: white;
+
+            padding: 40px;
+
+            border-radius: 20px;
+
+            border: 1px solid #e5e7eb;
+
+            box-shadow:
+                0 20px 50px rgba(30, 41, 59, 0.10);
+        }
+
+
+        /* =========================
+           LOGO
+        ========================= */
+
+        .logo {
+            width: 55px;
+            height: 55px;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #633de0,
+                    #5230cd
+                );
+
+            color: white;
+
+            border-radius: 15px;
+
+            font-size: 24px;
+            font-weight: bold;
+
+            box-shadow:
+                0 8px 20px rgba(99, 61, 224, 0.25);
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .signup-header {
+            text-align: center;
+
+            margin-bottom: 28px;
+        }
+
+        .signup-header h1 {
+            font-size: 28px;
+
+            margin-bottom: 8px;
+
+            color: #111827;
+        }
+
+        .signup-header p {
+            font-size: 14px;
+
+            color: #64748b;
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            color: #374151;
+        }
+
+
+        /* =========================
+           INPUT
+        ========================= */
+
+        .input-box {
+            position: relative;
+        }
+
+        .input-box input {
+            width: 100%;
+
+            padding: 14px 15px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            background: #f9fafb;
+
+            color: #111827;
+
+            font-size: 14px;
+
+            transition: 0.2s;
+        }
+
+        .input-box input:hover {
+            border-color: #9ca3af;
+        }
+
+        .input-box input:focus {
+            background: white;
+
+            border-color: #633de0;
+
+            box-shadow:
+                0 0 0 3px rgba(99, 61, 224, 0.12);
+        }
+
+
+        /* =========================
+           PASSWORD
+        ========================= */
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper input {
+            padding-right: 55px;
+        }
+
+        .show-password {
+            position: absolute;
+
+            right: 10px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            padding: 5px;
+
+            background: none;
+
+            border: none;
+
+            box-shadow: none;
+
+            color: #633de0;
+
+            font-size: 12px;
+
+            cursor: pointer;
+        }
+
+        .show-password:hover {
+            transform: translateY(-50%);
+
+            box-shadow: none;
+        }
+
+
+        /* =========================
+           SIGNUP BUTTON
+        ========================= */
+
+        .signup-btn {
+            width: 100%;
+
+            padding: 14px;
+
+            margin-top: 5px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #633de0,
+                    #5230cd
+                );
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            box-shadow:
+                0 6px 15px rgba(99, 61, 224, 0.25);
+        }
+
+        .signup-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 20px rgba(99, 61, 224, 0.3);
+        }
+
+        .signup-btn:active {
+            transform: translateY(0);
+        }
+
+
+        /* =========================
+           DIVIDER
+        ========================= */
+
+        .divider {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin: 25px 0;
+        }
+
+        .divider span {
+            height: 1px;
+
+            flex: 1;
+
+            background: #e5e7eb;
+        }
+
+        .divider p {
+            font-size: 12px;
+
+            color: #94a3b8;
+        }
+
+
+        /* =========================
+           GOOGLE BUTTON
+        ========================= */
+
+        .google-btn {
+            width: 100%;
+
+            padding: 13px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 12px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 10px;
+
+            background: white;
+
+            color: #374151;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            box-shadow: none;
+        }
+
+        .google-btn img {
+            width: 20px;
+            height: 20px;
+
+            padding: 0;
+
+            background: none;
+
+            border-radius: 0;
+        }
+
+        .google-btn:hover {
+            background: #f9fafb;
+
+            border-color: #9ca3af;
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 5px 12px rgba(30, 41, 59, 0.08);
+        }
+
+
+        /* =========================
+           LOGIN LINK
+        ========================= */
+
+        .login-link {
+            text-align: center;
+
+            margin-top: 25px;
+
+            font-size: 13px;
+
+            color: #64748b;
+        }
+
+        .login-link a {
+            color: #633de0;
+
+            font-weight: 600;
+
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           THEME BUTTON
+        ========================= */
+
+        .theme-btn {
+            position: fixed;
+
+            top: 20px;
+            right: 20px;
+
+            width: 42px;
+            height: 42px;
+
+            padding: 10px;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 50%;
+
+            background: white;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 5px 15px rgba(30, 41, 59, 0.08);
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.05);
+
+            box-shadow:
+                0 8px 20px rgba(30, 41, 59, 0.12);
+        }
+
+        .theme-btn img {
+            width: 100%;
+            height: 100%;
+
+            padding: 0;
+
+            background: none;
+
+            border-radius: 0;
+        }
+        #password , #confirmPassword{
+            width: 100%;
+
+            padding: 14px 15px;
+
+border: 0.5px solid #d1d5db;
+            border-radius:10px;
+
+            outline: none;
+
+            background:#11151b;
+
+          color: #ffffff;
+
+            font-size: 14px;
+
+            transition: 0.2s;
+
+        }
+ #password:focus , #confirmPassword:focus{
+    border-color: #5230cd;
+ }
+
+        /* =========================
+           DARK MODE
+        ========================= */
+
+        body.dark-mode {
+            background: #0f1115;
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .signup-container {
+            background: #181c23;
+
+            border-color: #2a303a;
+
+            box-shadow: none;
+        }
+
+        body.dark-mode .signup-header h1 {
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .signup-header p {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .form-group label {
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .input-box input {
+            background: #11151b;
+
+            color: #f1f5f9;
+
+            border-color: #343b46;
+        }
+
+        body.dark-mode .input-box input:focus {
+            background: #151a21;
+
+            border-color: #633de0;
+        }
+
+        body.dark-mode .divider span {
+            background: #2a303a;
+        }
+
+        body.dark-mode .google-btn {
+            background: #11151b;
+
+            color: #f1f5f9;
+
+            border-color: #343b46;
+        }
+
+        body.dark-mode .google-btn:hover {
+            background: #151a21;
+        }
+
+        body.dark-mode .theme-btn {
+            background: #181c23;
+
+            border-color: #343b46;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .signup-container {
+                padding: 30px 22px;
+
+                border-radius: 16px;
+            }
+
+            .signup-header h1 {
+                font-size: 24px;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
+
+                font-size: 21px;
+            }
+
+            .theme-btn {
+                top: 12px;
+                right: 12px;
+
+                width: 38px;
+                height: 38px;
+            }
+        }
+
+
+        /* =========================
+           SMALL PHONE
+        ========================= */
+
+        @media (max-width: 350px) {
+
+            .signup-container {
+                padding: 25px 18px;
+            }
+
+            .signup-header h1 {
+                font-size: 21px;
+            }
+
+            .signup-header p {
+                font-size: 12px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- THEME BUTTON -->
+
+    <button
+        class="theme-btn"
+        id="themeBtn"
+    >
+
+        <img
+            id="themeIcon"
+            src="https://www.svgrepo.com/show/532875/moon.svg"
+            alt="theme"
+        >
+
+    </button>
+
+
+    <!-- SIGN UP -->
+
+    <div class="signup-container">
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+            ST
+        </div>
+
+
+        <!-- HEADER -->
+
+        <div class="signup-header">
+
+            <h1>Create Account</h1>
+
+            <p>
+                Create your account to start managing tasks
+            </p>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <form id="signupForm">
+
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <div class="input-box">
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email
+                </label>
+
+                <div class="input-box">
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <div class="password-wrapper">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Create a password"
+                        minlength="6"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="show-password"
+                        id="showPassword"
+                    >
+                        Show
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONFIRM PASSWORD -->
+
+            <div class="form-group">
+
+                <label for="confirmPassword">
+                    Confirm Password
+                </label>
+
+                <div class="password-wrapper">
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm your password"
+                        minlength="6"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="show-password"
+                        id="showConfirmPassword"
+                    >
+                        Show
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SIGNUP BUTTON -->
+
+            <button
+                type="submit"
+                class="signup-btn"
+            >
+                Create Account
+            </button>
+
+        </form>
+
+
+        <!-- DIVIDER -->
+
+        <div class="divider">
+
+            <span></span>
+
+            <p>OR</p>
+
+            <span></span>
+
+        </div>
+
+
+        <!-- GOOGLE -->
+
+        <button
+            type="button"
+            class="google-btn"
+            id="googleBtn"
+        >
+
+            <img
+                src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                alt="Google"
+            >
+
+            Continue with Google
+
+        </button>
+
+
+        <!-- LOGIN -->
+
+        <div class="login-link">
+
+            Already have an account?
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+
+        /* =========================
+           ELEMENTS
+        ========================= */
+
+        let signupForm =
+            document.querySelector("#signupForm");
+
+        let googleBtn =
+            document.querySelector("#googleBtn");
+
+        let themeBtn =
+            document.querySelector("#themeBtn");
+
+        let themeIcon =
+            document.querySelector("#themeIcon");
+
+        let password =
+            document.querySelector("#password");
+
+        let confirmPassword =
+            document.querySelector("#confirmPassword");
+
+        let showPassword =
+            document.querySelector("#showPassword");
+
+        let showConfirmPassword =
+            document.querySelector("#showConfirmPassword");
+
+
+        /* =========================
+           SIGN UP
+        ========================= */
+
+        signupForm.addEventListener(
+            "submit",
+            function(e) {
+
+                e.preventDefault();
+
+
+                let name =
+                    document.querySelector("#name").value;
+               
+
+                let email =
+                    document.querySelector("#email").value;
+
+
+                /* Check passwords */
+
+                if (
+                    password.value !==
+                    confirmPassword.value
+                ) {
+
+                    alert("Passwords do not match!");
+
+                    return;
+
+                }
+
+
+                localStorage.removeItem("password")
+                localStorage.removeItem("email")
+                localStorage.removeItem("user_name")
+
+                localStorage.setItem(
+                    "email",
+                    email
+                );
+               
+                
+                localStorage.setItem(
+                    "user_name",
+                    name
+                );
+
+                localStorage.setItem("password" , password.value)
+                alert(
+                    "Account created successfully!"
+                );
+
+
+                /* Go to login */
+
+                window.location.href =
+                    "login.html";
+
+            }
+        );
+
+
+        /* =========================
+           SHOW PASSWORD
+        ========================= */
+
+        showPassword.addEventListener(
+            "click",
+            function() {
+
+                if (
+                    password.type === "password"
+                ) {
+
+                    password.type = "text";
+
+                    showPassword.textContent =
+                        "Hide";
+
+                } else {
+
+                    password.type = "password";
+
+                    showPassword.textContent =
+                        "Show";
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           SHOW CONFIRM PASSWORD
+        ========================= */
+
+        showConfirmPassword.addEventListener(
+            "click",
+            function() {
+
+                if (
+                    confirmPassword.type === "password"
+                ) {
+
+                    confirmPassword.type = "text";
+
+                    showConfirmPassword.textContent =
+                        "Hide";
+
+                } else {
+
+                    confirmPassword.type = "password";
+
+                    showConfirmPassword.textContent =
+                        "Show";
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           GOOGLE SIGNUP
+        ========================= */
+
+        googleBtn.addEventListener(
+            "click",
+            function() {
+
+                /*
+                    Real Google authentication
+                    should be connected using
+                    Google OAuth or Firebase.
+                */
+
+                alert(
+                    "Google Signup will be connected using Google OAuth."
+                );
+
+            }
+        );
+
+
+        /* =========================
+           DARK MODE
+        ========================= */
+
+        themeBtn.addEventListener(
+            "click",
+            function() {
+
+                document.body.classList.toggle(
+                    "dark-mode"
+                );
+
+
+                if (
+                    document.body.classList.contains(
+                        "dark-mode"
+                    )
+                ) {
+
+                    localStorage.setItem(
+                        "signupDark",
+                        "true"
+                    );
+
+                    themeIcon.setAttribute(
+                        "src",
+                        "https://www.svgrepo.com/show/532889/sun.svg"
+                    );
+
+                } else {
+
+                    localStorage.setItem(
+                        "signupDark",
+                        "false"
+                    );
+
+                    themeIcon.setAttribute(
+                        "src",
+                        "https://www.svgrepo.com/show/532875/moon.svg"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           LOAD DARK MODE
+        ========================= */
+
+        let savedTheme =
+            localStorage.getItem("signupDark");
+
+
+        if (savedTheme === "true") {
+
+            document.body.classList.add(
+                "dark-mode"
+            );
+
+            themeIcon.setAttribute(
+                "src",
+                "https://www.svgrepo.com/show/532889/sun.svg"
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>
