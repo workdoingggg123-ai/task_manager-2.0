@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Mananger</title>
+    <link rel="icon" type="image/png"
+      href="https://cdn-icons-png.flaticon.com/128/6177/6177329.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>  
+
+    <section class="Welcome">
+         <header class="header-top">
+            <div class="greeting">
+
+                 <img class="open-close" src="https://www.svgrepo.com/show/495758/task.svg" alt="img">
+                 <div class="msg">    <h2 class="msg-h2"></h2>
+            <p>Stay Organized and finized your task</p></div>
+             
+            </div>
+            
+            <div class="icons">
+                <img  id = "search_icon" src="https://www.svgrepo.com/show/532555/search.svg" alt="img">
+                <img id = "notifi" src="https://www.svgrepo.com/show/474166/notification-bell-new.svg" alt="img">
+                <img id = "dark_mode"src="https://www.svgrepo.com/show/532875/moon.svg" alt="img">
+               
+               
+                <div class="user-icon"> 
+                    M
+                <div class="red-dot">
+                   
+                </div>
+            </div>
+    </header>
+<div class="task-status">
+            <div class="task-bars">
+                <img src="https://www.svgrepo.com/show/502401/task.svg" alt="img">
+                <div class="total-task">
+                    <h3>Total task</h3>
+                    <h2 id = "total_h2">0</h2>
+                    <p>Qll assign tasks</p>
+                </div>
+            </div>
+
+
+            
+            <div class="task-bars">
+                <img src="https://www.svgrepo.com/show/387264/correct.svg" alt="img">
+                <div class="total-task">
+                    <h3>Completed</h3>
+                    <h2 id="complete_h2">0</h2>
+                    <p id  = "comp_p">50% completed</p>
+                   <div class="progress" id = "progress-complete">
+
+                   </div> 
+                </div>
+            </div>
+
+            <div class="task-bars">
+                <img src="https://www.svgrepo.com/show/507991/clock.svg" alt="img">
+                <div class="total-task">
+                    <h3>Pending</h3>
+                    <h2 id="pending_h2">0</h2>
+                    <p>Task Remaning</p>
+                   <div class="progress" id= "progress-pending">
+                   </div> 
+                </div>
+            </div>
+
+            <div class="task-bars">
+                <img src="https://www.svgrepo.com/show/426823/flagred.svg" alt="img">
+                <div class="total-task">
+                    <h3>High Priority</h3>
+                    <h2 id="priority_h2">0</h2>
+                    <p>Total High Priority Tasks</p>
+                   <div class="progress" id="progress-priority">
+
+                   </div> 
+                </div>
+            </div>
+           
+            <div class="task-bars">
+                <img src="https://www.svgrepo.com/show/357437/calender.svg" alt="img">
+                <div class="total-task">
+                    <h3>Over-due</h3>
+                    <h2 id="due_h2">2</h2>
+                    <p>Past due task</p>
+                   <div class="progress" id="progress-due">
+
+                   </div> 
+                </div>
+            </div>
+
+</div>
+
+   </section>
+
+
+   <aside>
+    <div class="aside-head"> 
+    <img class="open-close" src="https://www.svgrepo.com/show/495758/task.svg" alt="">
+   <h2>Student Task Board</h2></div>
+
+   <div class="main-aside">
+    <ol>
+        <li>
+            <img src="https://www.svgrepo.com/show/520684/dashboard.svg" alt="img">
+            <p>Dashboard</p>
+        </li>
+        <li id="ALL_TASK">
+            <img  src="https://www.svgrepo.com/show/357437/calender.svg" alt="img">
+            <p>All Tasks</p>
+        </li>
+
+        <li id = "COMPLETED">
+            <img src="https://www.svgrepo.com/show/387264/correct.svg" alt="img">
+           <p>Completed</p> </li>
+        <li id="PRIORITY">
+            <img src="https://www.svgrepo.com/show/426823/flagred.svg" alt="img">
+             <p>High Priority</p></li>
+        <li id  = "CALENDER">
+             <img src="https://www.svgrepo.com/show/357437/calender.svg" alt="img">
+            <p>Calender</p></li>
+        <li id="STATICS">
+            <img src = "https://www.svgrepo.com/show/283389/graphs-economy.svg" alt="img">
+            <p>Statics</p></li>
+    </ol>
+   </div>
+
+   <div class="clock-box">
+
+    <div class="clock">
+
+        <div class="number n12">12</div>
+        <div class="number n3">3</div>
+        <div class="number n6">6</div>
+        <div class="number n9">9</div>
+
+        <div class="hand hour"></div>
+        <div class="hand minute"></div>
+        <div class="hand second"></div>
+
+        <div class="center"></div>
+
+    </div>
+
+    <h3 id="time">00:00:00 AM</h3>
+    <p id="date">Thursday, 15 May 2025</p>
+
+</div>
+<div class="calendar-box">
+
+    <div class="calendar-header">
+        <button id="prev">‹</button>
+
+        <h3 id="month">September 2026</h3>
+
+        <button id="next">›</button>
+    </div>
+
+    <div class="calendar-days">
+        <span>Sun</span>
+        <span>Mon</span>
+        <span>Tue</span>
+        <span>Wed</span>
+        <span>Thu</span>
+        <span>Fri</span>
+        <span>Sat</span>
+    </div>
+
+    <div class="calendar-dates" id="dates"></div>
+
+</div>
+   
+   </aside>
+   
+
+   <section class="new-tasks">
+           <div class="container">
+            <div class="coint-head"><img src="https://www.svgrepo.com/show/372708/tasks-outline-badged.svg" alt="img">
+    <h2>Add New task</h2>
+</div>
+    
+<div class="inputs">
+   <div class="user_input"> <label for="studentName">Student Name</label>
+    <input type="text" id="studentName" placeholder="Student Name " required></div>
+   <div class="user_input">
+    <label for="taskName">Task Name</label>
+    <input type="text" id="taskName" placeholder="Task Name" required></div>
+
+    <div class="user_input">
+    <label for="priority">Priority</label>
+    <select id="priority">
+    <option>High</option>
+    <option>Medium</option>
+    <option>Low</option>
+    </select>
+    </div>
+
+    <div class="user_input">
+     <label for="time_date">Date and Time</label>
+    <input type="datetime-local" id="time_date" >
+
+    </div>
+    <div class="user_input"> <button id="addTask">Add Task</button></div>
+
+   
+    
+
+</div>
+
+    <div class="toolbar">
+
+    <input type="text" id="search" placeholder="Search student or task"> 
+    <button class="button-search">Search</button>
+
+    <select id="sortBtn">
+       <option value="" selected >Search Priority</option>
+      
+  <option value="high">High</option>
+  <option value="medium">Medium</option>
+  <option value="low">Low</option>
+
+    </select>
+
+    <button id="clearBtn">Clear All</button>
+
+    </div> </section>
+   
+
+<section class="display-task">
+    <div class="header">
+            <h4>Name</h4>
+            <h4>Task Name</h4>
+            <h4>Priority</h4>
+            <h4>Time</h4>
+            <h4>Action</h4>
+        </div>
+
+    <div class="empty" >
+        No tasks yet.
+    </div>
+    <div class="tasks" id="taskContainer"></div><!--this is usegul for the apppends all tasks-->
+
+    <div class="popup" id="clearPopup">
+    <div class="popup-box">
+
+        <h2>Clear All Tasks?</h2>
+
+        <p>Are you sure you want to delete all tasks?</p>
+
+        <div class="popup-buttons">
+            <button id="noBtn">No</button>
+            <button id="yesBtn">Yes</button>
+        </div>
+     </div>
+     </div>
+
+
+
+    
+    
+</section>
+
+
+   
+</body>
+<script src="script.js"></script>
+<script src="asidescript.js"></script>
+</html>
