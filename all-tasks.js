@@ -5,7 +5,7 @@
 let back_btn = document.querySelector(".back-btn")
 let all_tasks = document.querySelector("#total_h2")
 back_btn.addEventListener("click" , ()=>{
-    window.location.href = "index.html"
+    window.location.href = "main.html"
 })
 
     
