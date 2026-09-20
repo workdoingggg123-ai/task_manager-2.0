@@ -45,7 +45,11 @@ let calender_time = document.querySelector("#time");
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
  let dark_theam  = JSON.parse(localStorage.getItem("dark"));
+let logout  = document.querySelector(".log-out")
 
+logout.addEventListener("click" , ()=>{
+    window.location.herf = "index.html"
+})
 
 function formatDateTime(dateTime) {
 

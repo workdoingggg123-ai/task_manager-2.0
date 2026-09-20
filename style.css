@@ -191,11 +191,13 @@ body.dark-mode .popup-box p {
     border-radius: 50%;
     top: 0;
     right: 0;
+    margin: auto;
 }
 .user-icon{
     background-color: purple;
     color: white;
-    padding: 8px 14px ;
+    padding: 15px 20px;
+    margin: auto;
     font-size:30px;
     border-radius: 100%;
     position: relative;
@@ -207,6 +209,10 @@ body.dark-mode .popup-box p {
   
 }   
 
+.log-out{
+    width: 5rem;
+    
+} 
 
 
 /* Header */
