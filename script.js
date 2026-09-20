@@ -48,8 +48,8 @@ let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let logout  = document.querySelector(".log-out")
 
 logout.addEventListener("click" , ()=>{
-    window.location.herf = "index.html"
-})
+    window.location.href = "index.html";
+});
 
 function formatDateTime(dateTime) {
 
