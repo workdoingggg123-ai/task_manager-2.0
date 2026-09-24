@@ -29,7 +29,7 @@ export default async function handler(req, res) {
             },
 
             body: JSON.stringify({
-                from: "Task Manager <onboarding@resend.dev>",
+                from: "Task Manager <workdoingggg123@gmail.com>",
 
                 to: [email],
 
