@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-    // Only allow POST requests
     if (req.method !== "POST") {
         return res.status(405).json({
             success: false,
@@ -8,10 +7,8 @@ export default async function handler(req, res) {
     }
 
     try {
-        // Get email and name from your frontend
         const { email, name } = req.body || {};
 
-        // Check email
         if (!email) {
             return res.status(400).json({
                 success: false,
@@ -19,7 +16,6 @@ export default async function handler(req, res) {
             });
         }
 
-        // Send email using Resend
         const response = await fetch("https://api.resend.com/emails", {
             method: "POST",
 
@@ -29,39 +25,54 @@ export default async function handler(req, res) {
             },
 
             body: JSON.stringify({
-                from: "Task Manager <workdoingggg123@gmail.com>",
+                from: "Task Manager <onboarding@resend.dev>",
 
                 to: [email],
 
-                subject: "New Login - Task Manager",
+                subject: "Welcome to Task Manager 🎉",
 
                 html: `
                     <div style="
                         font-family: Arial, sans-serif;
                         max-width: 600px;
                         margin: auto;
-                        padding: 25px;
+                        padding: 30px;
                         line-height: 1.6;
+                        color: #333;
                     ">
 
-                        <h2>Hello ${name || "User"} 👋</h2>
+                        <h1 style="color: #633de0;">
+                            Welcome, ${name || "User"}! 👋
+                        </h1>
 
                         <p>
-                            Your Task Manager account was just logged into.
+                            Your Task Manager account has been created successfully.
                         </p>
 
                         <p>
-                            If this was you, you don't need to do anything.
+                            You can now start creating, organizing and tracking
+                            your tasks easily.
                         </p>
 
+                        <div style="
+                            background: #f5f3ff;
+                            padding: 20px;
+                            border-radius: 10px;
+                            margin: 20px 0;
+                        ">
+                            <strong>You're all set!</strong>
+                            <br>
+                            Start managing your tasks today.
+                        </div>
+
                         <p>
-                            If you did not log in, please check your account.
+                            Thanks for joining us!
                         </p>
 
                         <hr>
 
-                        <p>
-                            <strong>Student Task Manager</strong>
+                        <p style="color: #777;">
+                            Student Task Manager
                         </p>
 
                     </div>
@@ -69,10 +80,8 @@ export default async function handler(req, res) {
             })
         });
 
-        // Get Resend response
         const data = await response.json();
 
-        // Resend returned an error
         if (!response.ok) {
             console.error("Resend error:", data);
 
@@ -83,15 +92,13 @@ export default async function handler(req, res) {
             });
         }
 
-        // Success
         return res.status(200).json({
             success: true,
-            message: "Login email sent successfully",
-            data: data
+            message: "Welcome email sent successfully",
+            data
         });
 
     } catch (error) {
-
         console.error("Server error:", error);
 
         return res.status(500).json({

@@ -1,10 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="icon" type="image/png"
-      href="https://cdn-icons-png.flaticon.com/128/6177/6177329.png">
+
+    <link rel="icon" type="image/png"
+        href="https://cdn-icons-png.flaticon.com/128/6177/6177329.png">
 
     <title>Student Task Board - Sign Up</title>
 
@@ -102,21 +105,17 @@
 
         .signup-header {
             text-align: center;
-
             margin-bottom: 28px;
         }
 
         .signup-header h1 {
             font-size: 28px;
-
             margin-bottom: 8px;
-
             color: #111827;
         }
 
         .signup-header p {
             font-size: 14px;
-
             color: #64748b;
         }
 
@@ -221,7 +220,6 @@
 
         .show-password:hover {
             transform: translateY(-50%);
-
             box-shadow: none;
         }
 
@@ -271,6 +269,12 @@
 
         .signup-btn:active {
             transform: translateY(0);
+        }
+
+        .signup-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
         }
 
 
@@ -432,28 +436,7 @@
 
             border-radius: 0;
         }
-        #password , #confirmPassword{
-            width: 100%;
-              
-            padding: 14px 15px;
 
-border: 0.5px solid #d1d5db;
-            border-radius:10px;
-
-            outline: none;
-
-            background:#f9fafb;;
-
-        
-            font-size: 14px;
-
-            transition: 0.2s;
-
-        }
- #password:focus , #confirmPassword:focus{
-    border-color: #5230cd;
-
- }
 
         /* =========================
            DARK MODE
@@ -490,16 +473,6 @@ border: 0.5px solid #d1d5db;
             color: #f1f5f9;
 
             border-color: #343b46;
-        }
-
-        body.dark-mode #password {
-            background-color: #11151b;
-            color: white;
-        } 
-
-        body.dark-mode #confirmPassword{
-            background-color: #11151b;
-            color: white;
         }
 
         body.dark-mode .input-box input:focus {
@@ -594,11 +567,14 @@ border: 0.5px solid #d1d5db;
 <body>
 
 
-    <!-- THEME BUTTON -->
+    <!-- =========================
+         THEME BUTTON
+    ========================= -->
 
     <button
         class="theme-btn"
         id="themeBtn"
+        type="button"
     >
 
         <img
@@ -610,7 +586,9 @@ border: 0.5px solid #d1d5db;
     </button>
 
 
-    <!-- SIGN UP -->
+    <!-- =========================
+         SIGN UP
+    ========================= -->
 
     <div class="signup-container">
 
@@ -635,7 +613,9 @@ border: 0.5px solid #d1d5db;
         </div>
 
 
-        <!-- FORM -->
+        <!-- =========================
+             FORM
+        ========================= -->
 
         <form id="signupForm">
 
@@ -654,6 +634,7 @@ border: 0.5px solid #d1d5db;
                         type="text"
                         id="name"
                         placeholder="Enter your full name"
+                        autocomplete="name"
                         required
                     >
 
@@ -676,6 +657,7 @@ border: 0.5px solid #d1d5db;
                         type="email"
                         id="email"
                         placeholder="Enter your email"
+                        autocomplete="email"
                         required
                     >
 
@@ -699,6 +681,7 @@ border: 0.5px solid #d1d5db;
                         id="password"
                         placeholder="Create a password"
                         minlength="6"
+                        autocomplete="new-password"
                         required
                     >
 
@@ -730,6 +713,7 @@ border: 0.5px solid #d1d5db;
                         id="confirmPassword"
                         placeholder="Confirm your password"
                         minlength="6"
+                        autocomplete="new-password"
                         required
                     >
 
@@ -751,6 +735,7 @@ border: 0.5px solid #d1d5db;
             <button
                 type="submit"
                 class="signup-btn"
+                id="signupBtn"
             >
                 Create Account
             </button>
@@ -812,28 +797,37 @@ border: 0.5px solid #d1d5db;
            ELEMENTS
         ========================= */
 
-        let signupForm =
+        const signupForm =
             document.querySelector("#signupForm");
 
-        let googleBtn =
+        const signupBtn =
+            document.querySelector("#signupBtn");
+
+        const googleBtn =
             document.querySelector("#googleBtn");
 
-        let themeBtn =
+        const themeBtn =
             document.querySelector("#themeBtn");
 
-        let themeIcon =
+        const themeIcon =
             document.querySelector("#themeIcon");
 
-        let password =
+        const nameInput =
+            document.querySelector("#name");
+
+        const emailInput =
+            document.querySelector("#email");
+
+        const password =
             document.querySelector("#password");
 
-        let confirmPassword =
+        const confirmPassword =
             document.querySelector("#confirmPassword");
 
-        let showPassword =
+        const showPassword =
             document.querySelector("#showPassword");
 
-        let showConfirmPassword =
+        const showConfirmPassword =
             document.querySelector("#showConfirmPassword");
 
 
@@ -843,20 +837,21 @@ border: 0.5px solid #d1d5db;
 
         signupForm.addEventListener(
             "submit",
-            function(e) {
+            async function (e) {
 
                 e.preventDefault();
 
 
-                let name =
-                    document.querySelector("#name").value;
-               
+                const name =
+                    nameInput.value.trim();
 
-                let email =
-                    document.querySelector("#email").value;
+                const email =
+                    emailInput.value.trim();
 
 
-                /* Check passwords */
+                /* =========================
+                   CHECK PASSWORDS
+                ========================= */
 
                 if (
                     password.value !==
@@ -866,35 +861,160 @@ border: 0.5px solid #d1d5db;
                     alert("Passwords do not match!");
 
                     return;
-
                 }
 
 
-                localStorage.removeItem("password")
-                localStorage.removeItem("email")
-                localStorage.removeItem("user_name")
+                /* =========================
+                   DISABLE BUTTON
+                ========================= */
 
-                localStorage.setItem(
-                    "email",
-                    email
-                );
-               
-                
-                localStorage.setItem(
-                    "user_name",
-                    name
-                );
+                signupBtn.disabled = true;
 
-                localStorage.setItem("password" , password.value)
-                alert(
-                    "Account created successfully!"
-                );
+                signupBtn.textContent =
+                    "Creating Account...";
 
 
-                /* Go to login */
+                try {
 
-                window.location.href =
-                    "index.html";
+
+                    /* =========================
+                       SAVE USER INFORMATION
+                    ========================= */
+
+                    localStorage.removeItem("password");
+                    localStorage.removeItem("email");
+                    localStorage.removeItem("user_name");
+
+
+                    localStorage.setItem(
+                        "email",
+                        email
+                    );
+
+                    localStorage.setItem(
+                        "user_name",
+                        name
+                    );
+
+
+                    /*
+                     IMPORTANT:
+
+                     This is kept because your current
+                     project uses localStorage for login.
+
+                     For a real production authentication
+                     system, NEVER store passwords in
+                     localStorage.
+                    */
+
+                    localStorage.setItem(
+                        "password",
+                        password.value
+                    );
+
+
+                    /* =========================
+                       SEND WELCOME EMAIL
+                    ========================= */
+
+                    const response = await fetch(
+                        "/api/send-welcome-email",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+
+                                name: name,
+
+                                email: email
+
+                            })
+                        }
+                    );
+
+
+                    const data =
+                        await response.json();
+
+
+                    /* =========================
+                       EMAIL ERROR
+                    ========================= */
+
+                    if (!response.ok) {
+
+                        console.error(
+                            "Email error:",
+                            data
+                        );
+
+                        /*
+                         Account has already been
+                         created locally, but the
+                         welcome email failed.
+                        */
+
+                        alert(
+                            "Account created successfully, but the welcome email could not be sent."
+                        );
+
+                    }
+
+                    else {
+
+                        console.log(
+                            "Welcome email sent:",
+                            data
+                        );
+
+                        alert(
+                            "Account created successfully! Welcome email sent."
+                        );
+
+                    }
+
+
+                    /* =========================
+                       GO TO LOGIN
+                    ========================= */
+
+                    window.location.href =
+                        "index.html";
+
+
+                }
+
+                catch (error) {
+
+                    console.error(
+                        "Signup error:",
+                        error
+                    );
+
+
+                    /*
+                     The account information is
+                     already saved locally.
+
+                     Email service may simply be
+                     unavailable.
+                    */
+
+                    alert(
+                        "Account created, but the email service is currently unavailable."
+                    );
+
+
+                    window.location.href =
+                        "index.html";
+
+                }
 
             }
         );
@@ -906,7 +1026,7 @@ border: 0.5px solid #d1d5db;
 
         showPassword.addEventListener(
             "click",
-            function() {
+            function () {
 
                 if (
                     password.type === "password"
@@ -917,7 +1037,9 @@ border: 0.5px solid #d1d5db;
                     showPassword.textContent =
                         "Hide";
 
-                } else {
+                }
+
+                else {
 
                     password.type = "password";
 
@@ -936,7 +1058,7 @@ border: 0.5px solid #d1d5db;
 
         showConfirmPassword.addEventListener(
             "click",
-            function() {
+            function () {
 
                 if (
                     confirmPassword.type === "password"
@@ -947,7 +1069,9 @@ border: 0.5px solid #d1d5db;
                     showConfirmPassword.textContent =
                         "Hide";
 
-                } else {
+                }
+
+                else {
 
                     confirmPassword.type = "password";
 
@@ -966,7 +1090,7 @@ border: 0.5px solid #d1d5db;
 
         googleBtn.addEventListener(
             "click",
-            function() {
+            function () {
 
                 /*
                     Real Google authentication
@@ -988,7 +1112,7 @@ border: 0.5px solid #d1d5db;
 
         themeBtn.addEventListener(
             "click",
-            function() {
+            function () {
 
                 document.body.classList.toggle(
                     "dark-mode"
@@ -1011,7 +1135,9 @@ border: 0.5px solid #d1d5db;
                         "https://www.svgrepo.com/show/532889/sun.svg"
                     );
 
-                } else {
+                }
+
+                else {
 
                     localStorage.setItem(
                         "signupDark",
@@ -1033,7 +1159,7 @@ border: 0.5px solid #d1d5db;
            LOAD DARK MODE
         ========================= */
 
-        let savedTheme =
+        const savedTheme =
             localStorage.getItem("signupDark");
 
 
@@ -1050,7 +1176,9 @@ border: 0.5px solid #d1d5db;
 
         }
 
+
     </script>
 
 </body>
+
 </html>
