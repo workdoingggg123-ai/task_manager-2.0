@@ -896,18 +896,6 @@
                         name
                     );
 
-
-                    /*
-                     IMPORTANT:
-
-                     This is kept because your current
-                     project uses localStorage for login.
-
-                     For a real production authentication
-                     system, NEVER store passwords in
-                     localStorage.
-                    */
-
                     localStorage.setItem(
                         "password",
                         password.value
@@ -954,14 +942,10 @@
                             data
                         );
 
-                        /*
-                         Account has already been
-                         created locally, but the
-                         welcome email failed.
-                        */
+                    
 
                         alert(
-                            "Account created successfully, but the welcome email could not be sent."
+                            "Account created successfully, !!"
                         );
 
                     }
@@ -997,15 +981,6 @@
                         error
                     );
 
-
-                    /*
-                     The account information is
-                     already saved locally.
-
-                     Email service may simply be
-                     unavailable.
-                    */
-
                     alert(
                         "Account created, but the email service is currently unavailable."
                     );
@@ -1018,11 +993,6 @@
 
             }
         );
-
-
-        /* =========================
-           SHOW PASSWORD
-        ========================= */
 
         showPassword.addEventListener(
             "click",
@@ -1105,11 +1075,6 @@
             }
         );
 
-
-        /* =========================
-           DARK MODE
-        ========================= */
-
         themeBtn.addEventListener(
             "click",
             function () {
@@ -1154,10 +1119,6 @@
             }
         );
 
-
-        /* =========================
-           LOAD DARK MODE
-        ========================= */
 
         const savedTheme =
             localStorage.getItem("signupDark");
