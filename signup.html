@@ -189,10 +189,28 @@
 
         .password-wrapper {
             position: relative;
+            
         }
 
         .password-wrapper input {
             padding-right: 55px;
+             width: 100%;
+
+            padding: 14px 15px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            background: #f9fafb;
+
+            color: #111827;
+
+            font-size: 14px;
+
+            transition: 0.2s;
         }
 
         .show-password {
@@ -474,6 +492,10 @@
 
             border-color: #343b46;
         }
+        body.dark-mode .password-wrapper input{
+            background-color: #151a21;
+            color: white;
+        }
 
         body.dark-mode .input-box input:focus {
             background: #151a21;
@@ -665,6 +687,27 @@
 
             </div>
 
+                  <div class="form-group">
+
+                <label for="PHONE">
+                    Phone number 
+                </label>
+
+                <div class="input-box">
+
+                    <input
+                        type="tel"
+                        id="PHONE"
+                        placeholder="Enter your phone number for verfication"
+                        autocomplete="phone"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
 
             <!-- PASSWORD -->
 
@@ -830,6 +873,7 @@
         const showConfirmPassword =
             document.querySelector("#showConfirmPassword");
 
+        const phone = document.querySelector("#PHONE")
 
         /* =========================
            SIGN UP
@@ -847,6 +891,7 @@
 
                 const email =
                     emailInput.value.trim();
+                const Phone = phone.value.trim()    
 
 
                 /* =========================
@@ -884,6 +929,7 @@
                     localStorage.removeItem("password");
                     localStorage.removeItem("email");
                     localStorage.removeItem("user_name");
+                    localStorage.removeItem("phone")
 
 
                     localStorage.setItem(
@@ -900,6 +946,11 @@
                         "password",
                         password.value
                     );
+
+                    localStorage.setItem(
+                        "phone",
+                        Phone
+                    )
 
 
                     /* =========================
