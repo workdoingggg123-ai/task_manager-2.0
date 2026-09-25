@@ -850,6 +850,7 @@
                 localStorage.getItem("password");
 
 
+
             /* =========================
                CHECK LOGIN
             ========================= */
@@ -888,7 +889,7 @@
 
             let userName =
                 localStorage.getItem("user_name");
-
+            let userPhone = localStorage.getItem("phone");
 
             try {
 
@@ -944,7 +945,58 @@
                 );
 
             }
+            /* =========================
+   SEND LOGIN WHATSAPP
+========================= */
 
+try {
+
+    let whatsappResponse = await fetch(
+        "/api/send-login-whatsapp",
+        {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+
+                phone: userPhone,
+
+                name: userName
+
+            })
+        }
+    );
+
+    let whatsappResult =
+        await whatsappResponse.json();
+
+    if (!whatsappResponse.ok) {
+
+        console.error(
+            "WhatsApp failed:",
+            whatsappResult
+        );
+
+    } else {
+
+        console.log(
+            "WhatsApp sent successfully:",
+            whatsappResult
+        );
+
+    }
+
+} catch (error) {
+
+    console.error(
+        "WhatsApp error:",
+        error
+    );
+
+}
 
             /* =========================
                GO TO MAIN PAGE
