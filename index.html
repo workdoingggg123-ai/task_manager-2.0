@@ -1001,10 +1001,16 @@ try {
             /* =========================
                GO TO MAIN PAGE
             ========================= */
-
+         let logged_details = localStorage.getItem("loggedIn");
+         if (logged_details == "true") {
+            
             window.location.href =
                 "main.html";
 
+         }
+         else{
+            window.location.href = "index.html"
+         }
 
         }
     );
