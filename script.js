@@ -16,12 +16,13 @@ let body = document.querySelector("body");
 
 let complete_task = 0;
 let pending=0;
+let due_task = 0;
 
 let total_h2 = document.querySelector("#total_h2");
 let comp_h2 = document.querySelector("#complete_h2");
 let pending_h2 = document.querySelector("#pending_h2");
 let priority = document.querySelector("#priority_h2");
-let due = document.querySelector("#due_h2");
+let due_h2 = document.querySelector("#due_h2");
 let button_search = document.querySelector(".button-search");
 let high_prio = 0;
 
@@ -240,6 +241,7 @@ btn.addEventListener("click", () => {
 
         applyPriorityFilter();
         update_head();
+        updateDue();
 
     }
 });
@@ -279,12 +281,14 @@ yesBtn.addEventListener("click", () => {
     complete_task = 0;
     pending = 0;
     high_prio = 0
+    due_h2= 0 ; 
 
     // Clear Local Storage
     tasks = [];
     localStorage.removeItem("tasks");
 
     update_head();
+    updateDue();
 });
 
 
@@ -321,7 +325,7 @@ task_coin.addEventListener("click", (e) => {
         // Remove from page
         remove_item.remove();
 
-        update_head();
+       
 
         let card_len = task_coin.querySelector(".all-tasks");
 
@@ -366,7 +370,8 @@ task_coin.addEventListener("click", (e) => {
             complete_task--;
         }
 
-        update_head();ā
+        update_head();
+        updateDue();
     }
 
 });
@@ -599,7 +604,10 @@ let pending = total - completed;
 
     let User_name_acc = localStorage.getItem("user_name")
     let set_user_name = document.querySelector(".msg-h2")
-    let user_acc_icon = document.querySelector(".user-icon")
+    let user_acc_icon = document.querySelector(".user-icon");
+    
+   
+
 
     user_acc_icon.firstChild.textContent = User_name_acc.slice(0,2);
     set_user_name.textContent ="Welcome Back"+" "+" "+  User_name_acc+"✌️"
@@ -612,7 +620,7 @@ let pending = total - completed;
 
         // Restore ID
         user_tasks.dataset.id = task.id;
-
+      
 
         // Restore completed state
         if (task.completed) {
@@ -620,6 +628,7 @@ let pending = total - completed;
             user_tasks.classList.add("completed");
 
             complete_task++;
+          
 
         }
 
@@ -730,6 +739,9 @@ let pending = total - completed;
 
     info_time.textContent = formatDateTime(task.time);
 
+
+    
+
         user_tasks.append(
             info_name,
             info_task,
@@ -763,6 +775,7 @@ let pending = total - completed;
   
 
     update_head();
+    
 
     applyPriorityFilter();
 
@@ -773,8 +786,7 @@ let pending = total - completed;
 
 function clock() {
 
-    let now = new Date();
-
+     let now = new Date();
     let hours = now.getHours();
     let minutes = now.getMinutes();
     let seconds = now.getSeconds();
@@ -799,11 +811,58 @@ function clock() {
  
     
 }
+function updateDue() {
+
+    due_task = 0;
+
+    let now = new Date();
+
+    tasks.forEach(task => {
+
+        if (!task.time || task.time === "Not Scheduled") {
+            return;
+        }
+
+        if (task.completed) {
+            return;
+        }
+
+        let dueTime = new Date(task.time);
+
+        let difference = dueTime - now;
+
+        if (difference <= 0) {
+
+            due_task++;
+
+        } 
+        else {
+
+            let totalSeconds = Math.floor(difference / 1000);
+
+            let days = Math.floor(totalSeconds / (24 * 60 * 60));
+            totalSeconds %= 24 * 60 * 60;
+
+            let hours = Math.floor(totalSeconds / (60 * 60));
+            totalSeconds %= 60 * 60;
+
+            let minutes = Math.floor(totalSeconds / 60);
+            let seconds = totalSeconds % 60;
+
+        }
+
+    });
+
+    due_h2.textContent = due_task;
+}
+
 
 clock();
 setInterval(clock, 1000);
+updateDue();
+setInterval(updateDue ,1000)
 // ==========================================================
 // RUN LOCAL STORAGE LOAD
 // ==========================================================
 
-loadTasks()
+loadTasks();
