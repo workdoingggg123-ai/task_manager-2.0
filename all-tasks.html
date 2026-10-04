@@ -12,431 +12,242 @@
 </head>
 
 <style>
-    * {
+      /* =========================================================
+   RESET
+========================================================= */
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-:root {
-    --bg: #080b12;
-    --card: #111620;
-    --card-light: #171d29;
-    --border: rgba(255, 255, 255, 0.08);
 
-    --text: #f5f7fb;
-    --muted: #8d96a8;
-
-    --blue: #6366f1;
-    --purple: #8b5cf6;
-    --green: #22c55e;
-    --red: #ef4444;
-
-    --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-}
+/* =========================================================
+   BODY
+========================================================= */
 
 body {
     min-height: 100vh;
 
     font-family: Arial, sans-serif;
 
-    color: var(--text);
+    background: #f5f7fb;
 
-    background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(99, 102, 241, 0.15),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 90% 90%,
-            rgba(139, 92, 246, 0.12),
-            transparent 30%
-        ),
-        var(--bg);
+    color: #1f2937;
 
-    padding: 50px 30px;
+    padding: 30px;
 }
 
 
-/* =================================
+/* =========================================================
    MAIN
-================================= */
+========================================================= */
 
 main {
     width: 100%;
 }
 
 
-/* =================================
+/* =========================================================
    TOP
-================================= */
+========================================================= */
 
 .top {
     width: min(1200px, 94%);
 
-    margin: 0 auto 35px;
+    margin: 0 auto 25px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 }
 
 .top h1 {
-    position: relative;
+    color: #1f2937;
 
-    font-size: 34px;
+    font-size: 30px;
+
     font-weight: 700;
-
-    letter-spacing: -1px;
-}
-
-.top h1::after {
-    content: "";
-
-    display: block;
-
-    width: 45px;
-    height: 4px;
-
-    margin-top: 8px;
-
-    border-radius: 10px;
-
-    background: linear-gradient(
-        90deg,
-        var(--blue),
-        var(--purple)
-    );
 }
 
 
-/* =================================
+/* =========================================================
    BACK BUTTON
-================================= */
+========================================================= */
 
 .back-btn {
     display: flex;
+
     align-items: center;
+
+    justify-content: center;
+
     gap: 8px;
 
-    padding: 12px 20px;
+    padding: 10px 18px;
 
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    border: 1px solid #e5e7eb;
 
-    color: white;
+    border-radius: 8px;
 
-    background: rgba(255, 255, 255, 0.05);
+    background: #ffffff;
+
+    color: #374151;
 
     font-size: 14px;
+
     font-weight: 600;
 
     cursor: pointer;
 
-    backdrop-filter: blur(10px);
-
     transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        border 0.25s ease;
+        background 0.2s,
+        transform 0.2s,
+        box-shadow 0.2s;
 }
 
 .back-btn:hover {
-    transform: translateY(-2px);
+    background: #f8fafc;
 
-    background: linear-gradient(
-        135deg,
-        var(--blue),
-        var(--purple)
-    );
+    transform: translateY(-1px);
 
-    border-color: transparent;
-
-    box-shadow:
-        0 10px 30px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
 }
 
 .back-btn:active {
-    transform: scale(0.96);
+    transform: scale(0.97);
 }
 
 
-/* =================================
-   TASK SECTION
-================================= */
-
-.display-task {
-    width: min(1200px, 94%);
-
-    margin: auto;
-
-    padding: 10px;
-
-    border: 1px solid var(--border);
-    border-radius: 20px;
-
-    background: rgba(17, 22, 32, 0.82);
-
-    box-shadow: var(--shadow);
-
-    backdrop-filter: blur(18px);
-
-    overflow: hidden;
-}
-
-
-/* =================================
-   HEADER
-================================= */
-
-.header {
-    display: grid;
-
-    grid-template-columns:
-        1.2fr
-        1.7fr
-        1fr
-        1.6fr
-        1fr;
-
-    align-items: center;
-
-    min-height: 65px;
-
-    padding: 0 25px;
-
-    border-bottom: 1px solid var(--border);
-
-    background: rgba(255, 255, 255, 0.025);
-}
-
-.header h4 {
-    color: var(--muted);
-
-    font-size: 12px;
-    font-weight: 600;
-
-    text-transform: uppercase;
-
-    letter-spacing: 1px;
-}
-
-
-/* =================================
-   TASK CONTAINER
-================================= */
-
-.tasks {
-    width: 100%;
-}
-
+/* =========================================================
+   STATUS CARD SECTION
+========================================================= */
 
 .card {
     width: min(1200px, 94%);
 
-    margin: 0 auto 30px;
+    margin: 0 auto 25px;
 
     display: grid;
+
     grid-template-columns: repeat(4, 1fr);
 
     gap: 20px;
 }
 
 
-/* =================================
+/* =========================================================
    TASK STATUS CARD
-================================= */
+========================================================= */
 
 .task-status {
     position: relative;
 
     width: 100%;
-    min-height: 155px;
 
-    padding: 24px;
+    min-height: 130px;
+
+    padding: 20px;
 
     overflow: hidden;
 
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #ffffff;
 
-    border-radius: 20px;
+    border: 1px solid #edf0f3;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(25, 31, 45, 0.95),
-            rgba(13, 17, 25, 0.98)
-        );
+    border-radius: 12px;
 
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.28),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
-
-    backdrop-filter: blur(15px);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
 
     transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.2s,
+        box-shadow 0.2s;
 }
-
-
-/* Decorative glow */
-
-.task-status::before {
-    content: "";
-
-    position: absolute;
-
-    width: 120px;
-    height: 120px;
-
-    right: -45px;
-    top: -50px;
-
-    border-radius: 50%;
-
-    background: rgba(99, 102, 241, 0.18);
-
-    filter: blur(25px);
-
-    pointer-events: none;
-}
-
-
-/* Bottom accent */
-
-.task-status::after {
-    content: "";
-
-    position: absolute;
-
-    left: 24px;
-    bottom: 0;
-
-    width: 45px;
-    height: 3px;
-
-    border-radius: 10px 10px 0 0;
-
-    background: linear-gradient(
-        90deg,
-        #6366f1,
-        #8b5cf6
-    );
-}
-
-
-/* =================================
-   HOVER
-================================= */
 
 .task-status:hover {
-    transform: translateY(-6px);
+    transform: translateY(-3px);
 
-    border-color: rgba(99, 102, 241, 0.35);
-
-    box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.38),
-        0 0 30px rgba(99, 102, 241, 0.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
 }
 
 
-/* =================================
-   ICON + CONTENT
-================================= */
+/* =========================================================
+   STATUS CARD CONTENT
+========================================================= */
 
 .task-bars {
     position: relative;
+
     z-index: 2;
 
     display: flex;
 
     align-items: center;
 
-    gap: 18px;
+    gap: 15px;
 }
 
 
-/* =================================
-   ICON
-================================= */
+/* =========================================================
+   STATUS ICON
+========================================================= */
 
 .task-bars img {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+
+    height: 48px;
 
     padding: 12px;
 
     flex-shrink: 0;
 
-    border-radius: 15px;
+    background: #eaf3ff;
 
-    background: rgba(99, 102, 241, 0.12);
+    border-radius: 50%;
 
-    border: 1px solid rgba(99, 102, 241, 0.15);
-
-    filter:
-        brightness(0)
-        saturate(100%)
-        invert(43%)
-        sepia(90%)
-        saturate(2500%)
-        hue-rotate(220deg)
-        brightness(100%)
-        contrast(100%);
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease;
+    object-fit: contain;
 }
 
 
-.task-status:hover .task-bars img {
-    transform: scale(1.08) rotate(-4deg);
-
-    background: rgba(99, 102, 241, 0.18);
-}
-
-
-/* =================================
-   TEXT
-================================= */
+/* =========================================================
+   STATUS TEXT
+========================================================= */
 
 .total-task {
     min-width: 0;
 }
 
-
 .total-task h3 {
-    margin-bottom: 7px;
+    margin-bottom: 6px;
 
-    color: #8993a6;
+    color: #6b7280;
 
     font-size: 12px;
+
     font-weight: 600;
 
     text-transform: uppercase;
 
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
-
 .total-task h2 {
-    margin-bottom: 6px;
+    margin-bottom: 5px;
 
-    color: #f5f7fb;
+    color: #111827;
 
-    font-size: 32px;
+    font-size: 30px;
+
     font-weight: 700;
 
     line-height: 1;
 }
 
-
 .total-task p {
-    color: #687286;
+    color: #9ca3af;
 
     font-size: 11px;
 
@@ -444,160 +255,183 @@ main {
 }
 
 
-/* =================================
-   RESPONSIVE
-================================= */
+/* =========================================================
+   TASK DISPLAY
+========================================================= */
 
-@media (max-width: 1000px) {
+.display-task {
+    width: min(1200px, 94%);
 
-    .card {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    margin: auto;
+
+    background: #ffffff;
+
+    border: 1px solid #edf0f3;
+
+    border-radius: 12px;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+
+    overflow: hidden;
 }
 
 
-@media (max-width: 600px) {
+/* =========================================================
+   TABLE HEADER
+========================================================= */
 
-    .card {
-        grid-template-columns: 1fr;
-    }
-
-    .task-status {
-        min-height: 140px;
-    }
-}
-
-/* =================================
-   TASK ROW
-================================= */
-
-.task {
-    position: relative;
-
+.header {
     display: grid;
 
     grid-template-columns:
         1.2fr
-        1.7fr
+        1.5fr
         1fr
-        1.6fr
-        1fr;
+        1.5fr
+        100px;
 
     align-items: center;
 
-    min-height: 78px;
+    gap: 20px;
 
-    padding: 0 25px;
+    min-height: 55px;
 
-    border-bottom: 1px solid var(--border);
+    padding: 0 10px;
+
+    background: #f8fafc;
+
+    border-bottom: 1px solid #edf0f3;
+}
+
+.header h4 {
+    color: #6b7280;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   TASK CONTAINER
+========================================================= */
+
+.tasks {
+    width: 100%;
+}
+
+
+/* =========================================================
+   TASK ROW
+   SAME STRUCTURE AS HOME PAGE .all-tasks
+========================================================= */
+
+.task {
+    display: grid;
+
+    grid-template-columns:
+        1.2fr
+        1.5fr
+        1fr
+        1.5fr
+        100px;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 16px 10px;
+
+    border-bottom: 1px solid #edf0f3;
+
+    background: #ffffff;
+
+    font-size: 15px;
 
     transition:
-        background 0.25s ease,
-        transform 0.25s ease;
+        background 0.2s,
+        transform 0.2s,
+        opacity 0.2s;
 }
 
 .task:last-child {
     border-bottom: none;
 }
 
-
-/* Left glowing line */
-
-.task::before {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    top: 20%;
-
-    width: 3px;
-    height: 60%;
-
-    border-radius: 0 5px 5px 0;
-
-    background: linear-gradient(
-        180deg,
-        var(--blue),
-        var(--purple)
-    );
-
-    opacity: 0;
-
-    transition: opacity 0.25s ease;
-}
-
-
 .task:hover {
-    background: rgba(255, 255, 255, 0.035);
-}
-
-.task:hover::before {
-    opacity: 1;
+    background: #f8fafc;
 }
 
 
-/* =================================
+/* =========================================================
    USER NAME
-================================= */
+========================================================= */
 
 .user-name {
-    color: var(--text);
+    color: #1f2937;
 
     font-size: 15px;
+
     font-weight: 600;
 
     overflow: hidden;
 
     text-overflow: ellipsis;
+
     white-space: nowrap;
 }
 
 
-/* =================================
+/* =========================================================
    TASK NAME
-================================= */
+========================================================= */
 
 .task-name {
-    color: #d8dce5;
+    color: #374151;
 
     font-size: 14px;
 
     overflow: hidden;
 
     text-overflow: ellipsis;
+
     white-space: nowrap;
 }
 
 
-/* =================================
+/* =========================================================
    PRIORITY
-================================= */
+========================================================= */
 
 .user_choice {
     width: fit-content;
 
-    padding: 6px 12px;
+    padding: 5px 10px;
 
-    border-radius: 20px;
+    border-radius: 6px;
 
-    color: #c4b5fd;
+    color: #4f46e5;
 
-    background: rgba(139, 92, 246, 0.12);
+    background: #eef2ff;
 
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    border: 1px solid #e0e7ff;
 
     font-size: 12px;
+
     font-weight: 600;
 }
 
 
-/* =================================
+/* =========================================================
    TIME
-================================= */
+========================================================= */
 
 .task-time {
-    color: var(--muted);
+    color: #6b7280;
 
     font-size: 13px;
 
@@ -605,37 +439,62 @@ main {
 }
 
 
-/* =================================
+/* =========================================================
    ACTION
-================================= */
+========================================================= */
 
 .user_action {
     display: flex;
+
     align-items: center;
-    gap: 12px;
-    
+
+    gap: 8px;
+
+    color: #6b7280;
+
+    font-size: 13px;
+
+    font-weight: 600;
 }
 
+
+/* =========================================================
+   WAITING ICON
+========================================================= */
+
 .img_que {
-    
     width: 28px;
+
     height: 28px;
+
+    padding: 0;
+
+    margin: 0;
+
+    background: transparent;
+
+    border-radius: 0;
 
     object-fit: contain;
 
     display: block;
 
-    /* Make the SVG red */
-    filter: invert(20%) sepia(90%) saturate(5000%) hue-rotate(350deg)
-            brightness(90%) contrast(100%);
- animation: waiting 1.8s ease-in-out infinite;
+    filter:
+        invert(20%)
+        sepia(90%)
+        saturate(5000%)
+        hue-rotate(350deg)
+        brightness(90%)
+        contrast(100%);
+
+    animation: waiting 1.8s ease-in-out infinite;
 
     transition: transform 0.25s ease;
 }
 
 
-
 @keyframes waiting {
+
     0% {
         transform: rotate(0deg);
         opacity: 0.6;
@@ -653,36 +512,19 @@ main {
 }
 
 
-
-@keyframes completed {
-    0% {
-        transform: rotate(0deg);
-        opacity: 0.6;
-    }
-
-    50% {
-        transform: rotate(8deg);
-        opacity: 1;
-    }
-
-    100% {
-        transform: rotate(0deg);
-        opacity: 0.6;
-    }
-}
-
-
-/* =================================
-   COMPLETE
-================================= */
+/* =========================================================
+   COMPLETED ICON
+========================================================= */
 
 .complete-task {
     width: 30px;
+
     height: 30px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     border-radius: 50%;
@@ -690,9 +532,8 @@ main {
     cursor: pointer;
 
     transition:
-        transform 0.2s ease,
-        filter 0.2s ease;
-    animation: completed.8s ease-in-out infinite;
+        transform 0.2s,
+        filter 0.2s;
 }
 
 .complete-task:hover {
@@ -705,83 +546,35 @@ main {
 
 .complete-task svg {
     width: 27px;
+
     height: 27px;
 
     display: block;
 }
 
 
-/* =================================
-   DELETE
-================================= */
-
-.in-svg {
-    width: 36px;
-    height: 36px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 9px;
-
-    cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
-}
-
-.in-svg:hover {
-    background: rgba(239, 68, 68, 0.1);
-
-    transform: translateY(-2px);
-}
-
-.delete-icon {
-    width: 23px;
-    height: 23px;
-
-    fill: none;
-
-    stroke: #737c8f;
-
-    stroke-width: 1.8;
-
-    stroke-linecap: round;
-    stroke-linejoin: round;
-
-    transition: stroke 0.2s ease;
-}
-
-.in-svg:hover .delete-icon {
-    stroke: var(--red);
-}
-
-
-/* =================================
+/* =========================================================
    COMPLETED TASK
-================================= */
+   SAME AS HOME PAGE
+========================================================= */
 
 .task.completed {
     opacity: 0.55;
+
+    background: #f9fafb;
 }
 
-.task.completed .task-name {
-    color: var(--muted);
-
-    text-decoration: line-through;
-}
-
+.task.completed .task-name,
 .task.completed .user-name {
-    color: var(--muted);
+    text-decoration: line-through;
+
+    color: #9ca3af;
 }
 
 
-/* =================================
+/* =========================================================
    EMPTY STATE
-================================= */
+========================================================= */
 
 .empty {
     min-height: 260px;
@@ -789,11 +582,12 @@ main {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     flex-direction: column;
 
-    color: var(--muted);
+    color: #9ca3af;
 
     font-size: 15px;
 }
@@ -802,6 +596,7 @@ main {
     content: "✓";
 
     width: 55px;
+
     height: 55px;
 
     margin-bottom: 15px;
@@ -809,26 +604,28 @@ main {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     border-radius: 50%;
 
-    color: #a5b4fc;
+    color: #6366f1;
 
-    background: rgba(99, 102, 241, 0.1);
+    background: #eef2ff;
 
-    border: 1px solid rgba(99, 102, 241, 0.2);
+    border: 1px solid #e0e7ff;
 
     font-size: 22px;
 }
 
 
-/* =================================
+/* =========================================================
    SCROLLBAR
-================================= */
+========================================================= */
 
 ::-webkit-scrollbar {
     width: 7px;
+
     height: 7px;
 }
 
@@ -839,22 +636,258 @@ main {
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
 
-    background: #2a3140;
+    background: #cbd5e1;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #3b4558;
+    background: #94a3b8;
 }
 
 
-/* =================================
-   MOBILE
-================================= */
+/* =========================================================
+   DARK MODE
+   Add class "dark-mode" to body using JavaScript
+========================================================= */
+
+body.dark-mode {
+    background: #0f172a;
+
+    color: #f5f7fb;
+}
+
+
+/* =========================================================
+   DARK MODE - TOP
+========================================================= */
+
+body.dark-mode .top h1 {
+    color: #f5f7fb;
+}
+
+
+/* =========================================================
+   DARK MODE - BACK BUTTON
+========================================================= */
+
+body.dark-mode .back-btn {
+    background: #111827;
+
+    color: #e5e7eb;
+
+    border-color: #273244;
+}
+
+body.dark-mode .back-btn:hover {
+    background: #1f2937;
+
+    border-color: #374151;
+}
+
+
+/* =========================================================
+   DARK MODE - STATUS CARD
+========================================================= */
+
+body.dark-mode .task-status {
+    background: #111827;
+
+    border-color: #273244;
+
+    box-shadow:
+        0 3px 15px rgba(0, 0, 0, 0.25);
+}
+
+body.dark-mode .task-status:hover {
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   DARK MODE - STATUS ICON
+========================================================= */
+
+body.dark-mode .task-bars img {
+    background: #1e293b;
+}
+
+
+/* =========================================================
+   DARK MODE - STATUS TEXT
+========================================================= */
+
+body.dark-mode .total-task h3 {
+    color: #94a3b8;
+}
+
+body.dark-mode .total-task h2 {
+    color: #f8fafc;
+}
+
+body.dark-mode .total-task p {
+    color: #64748b;
+}
+
+
+/* =========================================================
+   DARK MODE - TASK DISPLAY
+========================================================= */
+
+body.dark-mode .display-task {
+    background: #111827;
+
+    border-color: #273244;
+
+    box-shadow:
+        0 3px 15px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   DARK MODE - HEADER
+========================================================= */
+
+body.dark-mode .header {
+    background: #172033;
+
+    border-bottom-color: #273244;
+}
+
+body.dark-mode .header h4 {
+    color: #94a3b8;
+}
+
+
+/* =========================================================
+   DARK MODE - TASK ROW
+========================================================= */
+
+body.dark-mode .task {
+    background: #111827;
+
+    border-bottom-color: #273244;
+}
+
+body.dark-mode .task:hover {
+    background: #172033;
+}
+
+
+/* =========================================================
+   DARK MODE - USER NAME
+========================================================= */
+
+body.dark-mode .user-name {
+    color: #f1f5f9;
+}
+
+
+/* =========================================================
+   DARK MODE - TASK NAME
+========================================================= */
+
+body.dark-mode .task-name {
+    color: #cbd5e1;
+}
+
+
+/* =========================================================
+   DARK MODE - PRIORITY
+========================================================= */
+
+body.dark-mode .user_choice {
+    color: #c4b5fd;
+
+    background: rgba(139, 92, 246, 0.14);
+
+    border-color: rgba(139, 92, 246, 0.25);
+}
+
+
+/* =========================================================
+   DARK MODE - TIME
+========================================================= */
+
+body.dark-mode .task-time {
+    color: #94a3b8;
+}
+
+
+/* =========================================================
+   DARK MODE - ACTION
+========================================================= */
+
+body.dark-mode .user_action {
+    color: #94a3b8;
+}
+
+
+/* =========================================================
+   DARK MODE - COMPLETED TASK
+========================================================= */
+
+body.dark-mode .task.completed {
+    background: #0f172a;
+
+    opacity: 0.55;
+}
+
+body.dark-mode .task.completed .task-name,
+body.dark-mode .task.completed .user-name {
+    color: #64748b;
+}
+
+
+/* =========================================================
+   DARK MODE - EMPTY
+========================================================= */
+
+body.dark-mode .empty {
+    color: #64748b;
+}
+
+body.dark-mode .empty::before {
+    color: #a5b4fc;
+
+    background: rgba(99, 102, 241, 0.12);
+
+    border-color: rgba(99, 102, 241, 0.25);
+}
+
+
+/* =========================================================
+   DARK MODE - SCROLLBAR
+========================================================= */
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background: #334155;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+
+/* =========================================================
+   RESPONSIVE - STATUS CARDS
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .card {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLE
+========================================================= */
 
 @media (max-width: 850px) {
 
     body {
-        padding: 30px 15px;
+        padding: 25px 15px;
     }
 
     .top {
@@ -874,6 +907,52 @@ main {
     .header,
     .task {
         min-width: 850px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .card {
+        grid-template-columns: 1fr;
+    }
+
+    .task-status {
+        min-height: 140px;
+    }
+
+    .top h1 {
+        font-size: 25px;
+    }
+
+    .back-btn {
+        padding: 9px 14px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREEN
+========================================================= */
+
+@media (max-width: 400px) {
+
+    body {
+        padding: 20px 10px;
+    }
+
+    .top h1 {
+        font-size: 22px;
+    }
+
+    .back-btn {
+        padding: 8px 12px;
+
+        font-size: 13px;
     }
 }
 </style>

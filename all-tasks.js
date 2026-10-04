@@ -4,11 +4,13 @@
     let empty_text = document.querySelector(".empty")
 let back_btn = document.querySelector(".back-btn")
 let all_tasks = document.querySelector("#total_h2")
+let body= document.querySelector("body")
+let dark = localStorage.getItem("dark");
 back_btn.addEventListener("click" , ()=>{
     window.location.href = "main.html"
 })
 
-    
+console.log(all_user_tasks)
 function formatDateTime(dateTime) {
 
     if (!dateTime) {
@@ -33,7 +35,14 @@ function formatDateTime(dateTime) {
 
 sort_tasks();
 
+function apply_dark(){
+    
+    if(dark === "true"){
+         body.classList.add("dark-mode");
+    }
+}
 
+apply_dark()
 
 function loadTasks(){
   all_user_tasks.forEach(task => {

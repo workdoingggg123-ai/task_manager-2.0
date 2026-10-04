@@ -298,31 +298,25 @@ yesBtn.addEventListener("click", () => {
 
 task_coin.addEventListener("click", (e) => {
 
-    // ======================================================
-    // DELETE
-    // ======================================================
-
     if (e.target.closest(".delete-icon")) {
 
         let remove_item = e.target.closest(".all-tasks");
 
-        // Get ID from HTML card
+        
         let id = Number(remove_item.dataset.id);
-           // Find the task before deleting it
+         
         let task = tasks.find(task => task.id === id);
 
-    // If deleted task was High priority
     if (task && task.priority === "High") {
         high_prio--;
     }
 
-        // Remove from tasks array
+        
         tasks = tasks.filter(task => task.id !== id);
        
-        // Save updated array
+        
         saveTasks();
 
-        // Remove from page
         remove_item.remove();
 
        
@@ -336,10 +330,6 @@ task_coin.addEventListener("click", (e) => {
         }
     }
 
-
-    // ======================================================
-    // COMPLETE
-    // ======================================================
 
     if (e.target.closest(".complete-task")) {
 
@@ -376,10 +366,6 @@ task_coin.addEventListener("click", (e) => {
 
 });
 
-
-// ==========================================================
-// SEARCH LOGIC
-// ==========================================================
 
 button_search.addEventListener("click", () => {
 
@@ -439,10 +425,6 @@ search.addEventListener("input", () => {
 });
 
 
-// ==========================================================
-// PRIORITY FILTER
-// ==========================================================
-
 function applyPriorityFilter() {
 
     let sort = sortBtn.value.toLowerCase();
@@ -479,18 +461,9 @@ function applyPriorityFilter() {
 }
 
 
-// ==========================================================
-// PRIORITY FILTER EVENT
-// ==========================================================
-
 sortBtn.addEventListener("change", applyPriorityFilter);
 
 
-
-
-// ==========================================================
-// DARK MODE EVENT
-// ==========================================================
 
 dark_button.addEventListener("click", ()=>{
     body.classList.toggle("dark-mode");
@@ -521,10 +494,6 @@ function applydark() {
 }
 
 
-// ==========================================================
-// SIDEBAR TOGGLE
-// ==========================================================
-
 let open_close = document.querySelectorAll(".open-close");
 
 let welcome_sec = document.querySelector(".Welcome");
@@ -553,9 +522,6 @@ open_close.forEach(button => {
 });
 
 
-// ==========================================================
-// UPDATE DASHBOARD
-// ==========================================================
 
 function update_head() {
 
@@ -566,7 +532,7 @@ function update_head() {
     const progress_comp = document.querySelector("#progress-complete")
     const p_comp = document.querySelector("#comp_p")
     const progress_pending = document.querySelector("#progress-pending")
-  
+    const pending_progress = document.querySelector("#progress-due");
     const priot = document.querySelector("#progress-priority")
 
    p_comp.textContent = card_len.length === 0 ? "0%" : Math.floor((complete_task / card_len.length) * 100) + "%";
@@ -586,6 +552,8 @@ let pending = total - completed;
     
     progress_comp.style.setProperty("--progress-colour" , `${((complete_task/card_len.length)*100)}%`)
     progress_pending.style.setProperty("--progress-colour" , `${(pending/card_len.length)*100}%`)
+    pending_progress.style.setProperty("--progress-colour" , `${(due_task/card_len.length)*100}%`)
+
     
     priot.style.setProperty("--progress-colour" , `${(high_prio/card_len.length)*100}%`)
     priority.textContent = high_prio;
@@ -622,7 +590,7 @@ let pending = total - completed;
         user_tasks.dataset.id = task.id;
       
 
-        // Restore completed state
+    
         if (task.completed) {
 
             user_tasks.classList.add("completed");
