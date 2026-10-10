@@ -23,47 +23,34 @@
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-
-
         /* =========================
            BODY
         ========================= */
 
         body {
-            min-height: 100vh;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
+           min-height: 100vh;
+            margin: 0;
+            padding: 0;
             background: #f7f8fc;
             color: #111827;
-
-            padding: 20px;
-
-            transition: 0.3s ease;
         }
+.backgroundimg{
+        width: 100%;
+    min-height: 100vh;
 
+    background-image: url("./back_groung_image.png");
 
-        /* =========================
-           SIGNUP CONTAINER
-        ========================= */
-
-        .signup-container {
-            width: 100%;
-            max-width: 450px;
-
-            background: white;
-
-            padding: 40px;
-
-            border-radius: 20px;
-
-            border: 1px solid #e5e7eb;
-
-            box-shadow:
-                0 20px 50px rgba(30, 41, 59, 0.10);
-        }
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 40px 8px ;
+    position: relative;
+    }
+       
 
 
         /* =========================
@@ -111,7 +98,7 @@
         .signup-header h1 {
             font-size: 28px;
             margin-bottom: 8px;
-            color: #111827;
+            color: #111827; 
         }
 
         .signup-header p {
@@ -119,7 +106,68 @@
             color: #64748b;
         }
 
+        /* =========================
+           SIGNUP CONTAINER
+        ========================= */
 
+        .signup-container {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.171);
+            backdrop-filter: blur(12px);
+            right: 60px;
+            top: 10px;
+            padding: 40px;
+            border-radius: 20px;
+
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 50px rgba(30, 41, 59, 0.2);
+
+            position: relative;
+            z-index: 1;
+        }
+
+
+        /* Student message */
+        .messages{
+            position: absolute;
+            z-index: 10;
+            top: 10px;
+            margin: 30px 10px ;
+            padding: 40px;
+          left: 0px;
+          text-align:start;
+          font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .messages h1{
+            font-weight: 600;
+        }
+        .inside_msg{
+          margin: 25px 0px;
+            font-size: 55px;
+            font-weight:900;   
+            
+        }
+       .brand-header {
+            display: flex;
+            align-items: center;
+            
+}
+.brand-header .logo {
+    margin: 10px;
+}
+        .violet{
+           color: #5230cd;
+        }
+      .inside_para{
+        color: #343b46;
+        font-size: large;
+
+      }
+
+    body.dark-mode .img_aside{
+        opacity: 0.6;
+    }
         /* =========================
            FORM
         ========================= */
@@ -409,178 +457,249 @@
             text-decoration: underline;
         }
 
+@media (max-width: 768px) {
+    .backgroundimg {
+        min-height: 100vh;
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        padding: 30px 18px;
+        background-position: center;
+        background-size: cover;
+    }
 
-        /* =========================
-           THEME BUTTON
-        ========================= */
+    /* Put the introductory text above the form */
+    .messages {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        max-width: 500px;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
 
-        .theme-btn {
-            position: fixed;
+    .brand-header {
+        justify-content: center;
+        gap: 8px;
+    }
 
-            top: 20px;
-            right: 20px;
+    .brand-header .logo {
+        margin: 0;
+        flex-shrink: 0;
+    }
 
-            width: 42px;
-            height: 42px;
+    .brand-header h1 {
+        font-size: 22px;
+    }
 
-            padding: 10px;
+    .inside_msg {
+        margin: 20px 0 12px;
+        font-size: clamp(30px, 6vw, 44px);
+        font-weight: 800;
+        line-height: 1.2;
+    }
 
-            border: 1px solid #e5e7eb;
+    .inside_para {
+        font-size: 15px;
+        line-height: 1.6;
+    }
 
-            border-radius: 50%;
+    .signup-container {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        max-width: 450px;
+        padding: 30px 25px;
+        border-radius: 18px;
+    }
 
-            background: white;
+    .signup-header {
+        margin-bottom: 24px;
+    }
 
-            cursor: pointer;
+    .signup-header h1 {
+        font-size: 25px;
+    }
 
-            box-shadow:
-                0 5px 15px rgba(30, 41, 59, 0.08);
-        }
+    .form-group {
+        margin-bottom: 16px;
+    }
 
-        .theme-btn:hover {
-            transform: scale(1.05);
+    .input-box input,
+    .password-wrapper input {
+        font-size: 16px;
+    }
+}
 
-            box-shadow:
-                0 8px 20px rgba(30, 41, 59, 0.12);
-        }
+/* Mobile phones */
+@media (max-width: 480px) {
+    .backgroundimg {
+        padding: 24px 14px;
+        gap: 22px;
+    }
 
-        .theme-btn img {
-            width: 100%;
-            height: 100%;
+    .messages {
+        max-width: 100%;
+    }
 
-            padding: 0;
+    .brand-header .logo {
+        width: 43px;
+        height: 43px;
+        font-size: 19px;
+        border-radius: 12px;
+    }
 
-            background: none;
+    .brand-header h1 {
+        font-size: 19px;
+    }
 
-            border-radius: 0;
-        }
+    .inside_msg {
+        margin: 16px 0 10px;
+        font-size: clamp(27px, 7vw, 36px);
+    }
+
+    .inside_para {
+        font-size: 14px;
+    }
+
+    .signup-container {
+        padding: 25px 20px;
+        border-radius: 16px;
+    }
+
+    .signup-container > .logo {
+        width: 46px;
+        height: 46px;
+        font-size: 21px;
+        margin-bottom: 16px;
+    }
+
+    .signup-header h1 {
+        font-size: 23px;
+    }
+
+    .signup-header p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .form-group label {
+        font-size: 13px;
+    }
+
+    .input-box input,
+    .password-wrapper input {
+        padding: 13px 12px;
+        font-size: 16px;
+    }
+
+    .password-wrapper input {
+        padding-right: 55px;
+    }
+
+    .show-password {
+        right: 8px;
+    }
+
+    .signup-btn,
+    .google-btn {
+        padding: 13px;
+    }
+
+    .divider {
+        margin: 20px 0;
+    }
+
+    .login-link {
+        margin-top: 20px;
+        line-height: 1.7;
+    }
+}
+
+/* Small mobile phones */
+@media (max-width: 350px) {
+    .backgroundimg {
+        padding: 20px 10px;
+        gap: 18px;
+    }
+
+    .brand-header {
+        gap: 6px;
+    }
+
+    .brand-header h1 {
+        font-size: 16px;
+    }
+
+    .brand-header .logo {
+        width: 38px;
+        height: 38px;
+        font-size: 17px;
+    }
+
+    .inside_msg {
+        font-size: 27px;
+    }
+
+    .inside_para {
+        font-size: 13px;
+    }
+
+    .signup-container {
+        padding: 22px 15px;
+    }
+
+    .signup-header h1 {
+        font-size: 21px;
+    }
+
+    .signup-header p {
+        font-size: 12px;
+    }
+
+    .input-box input,
+    .password-wrapper input {
+        padding: 12px 10px;
+        font-size: 16px;
+    }
+
+    .password-wrapper input {
+        padding-right: 50px;
+    }
+
+    .show-password {
+        font-size: 11px;
+    }
+
+    .google-btn {
+        gap: 8px;
+        font-size: 12px;
+    }
+}
+
+/* Very short screens in landscape mode */
+@media (max-height: 500px) and (orientation: landscape) {
+    .backgroundimg {
+        min-height: 100vh;
+        height: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .signup-container {
+        margin: 0 auto;
+    }
+}
 
 
-        /* =========================
-           DARK MODE
-        ========================= */
-
-        body.dark-mode {
-            background: #0f1115;
-            color: #f1f5f9;
-        }
-
-        body.dark-mode .signup-container {
-            background: #181c23;
-
-            border-color: #2a303a;
-
-            box-shadow: none;
-        }
-
-        body.dark-mode .signup-header h1 {
-            color: #f1f5f9;
-        }
-
-        body.dark-mode .signup-header p {
-            color: #94a3b8;
-        }
-
-        body.dark-mode .form-group label {
-            color: #cbd5e1;
-        }
-
-        body.dark-mode .input-box input {
-            background: #11151b;
-
-            color: #f1f5f9;
-
-            border-color: #343b46;
-        }
-        body.dark-mode .password-wrapper input{
-            background-color: #151a21;
-            color: white;
-        }
-
-        body.dark-mode .input-box input:focus {
-            background: #151a21;
-
-            border-color: #633de0;
-        }
-
-        body.dark-mode .divider span {
-            background: #2a303a;
-        }
-
-        body.dark-mode .google-btn {
-            background: #11151b;
-
-            color: #f1f5f9;
-
-            border-color: #343b46;
-        }
-
-        body.dark-mode .google-btn:hover {
-            background: #151a21;
-        }
-
-        body.dark-mode .theme-btn {
-            background: #181c23;
-
-            border-color: #343b46;
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 500px) {
-
-            body {
-                padding: 15px;
-            }
-
-            .signup-container {
-                padding: 30px 22px;
-
-                border-radius: 16px;
-            }
-
-            .signup-header h1 {
-                font-size: 24px;
-            }
-
-            .logo {
-                width: 50px;
-                height: 50px;
-
-                font-size: 21px;
-            }
-
-            .theme-btn {
-                top: 12px;
-                right: 12px;
-
-                width: 38px;
-                height: 38px;
-            }
-        }
-
-
-        /* =========================
-           SMALL PHONE
-        ========================= */
-
-        @media (max-width: 350px) {
-
-            .signup-container {
-                padding: 25px 18px;
-            }
-
-            .signup-header h1 {
-                font-size: 21px;
-            }
-
-            .signup-header p {
-                font-size: 12px;
-            }
-        }
+     
+        
 
     </style>
 </head>
@@ -588,24 +707,25 @@
 
 <body>
 
+<div class="backgroundimg">
+ <div class="messages">
+       
+   <div class="brand-header">
+       <span class="logo" id="logo_message">ST</span>
+       <h1>Student task Board</h1>
 
-    <!-- =========================
-         THEME BUTTON
-    ========================= -->
+   </div>
+   <div class="inside_msg">
+      <div>Sign Up Today  ,</div>
+      <div>Achieve <span class="violet">Forever</span></div>
+   </div>
+   <div class="inside_para">
+      <p>Keep track of your tasks,</p>
+      <p>Build the productive student you want to be.</p>
+   </div>
+</div>
 
-    <button
-        class="theme-btn"
-        id="themeBtn"
-        type="button"
-    >
-
-        <img
-            id="themeIcon"
-            src="https://www.svgrepo.com/show/532875/moon.svg"
-            alt="theme"
-        >
-
-    </button>
+ 
 
 
     <!-- =========================
@@ -832,6 +952,7 @@
 
     </div>
 
+   </div>
 
     <script>
 
@@ -849,11 +970,6 @@
         const googleBtn =
             document.querySelector("#googleBtn");
 
-        const themeBtn =
-            document.querySelector("#themeBtn");
-
-        const themeIcon =
-            document.querySelector("#themeIcon");
 
         const nameInput =
             document.querySelector("#name");
@@ -1126,68 +1242,8 @@
             }
         );
 
-        themeBtn.addEventListener(
-            "click",
-            function () {
 
-                document.body.classList.toggle(
-                    "dark-mode"
-                );
-
-
-                if (
-                    document.body.classList.contains(
-                        "dark-mode"
-                    )
-                ) {
-
-                    localStorage.setItem(
-                        "signupDark",
-                        "true"
-                    );
-
-                    themeIcon.setAttribute(
-                        "src",
-                        "https://www.svgrepo.com/show/532889/sun.svg"
-                    );
-
-                }
-
-                else {
-
-                    localStorage.setItem(
-                        "signupDark",
-                        "false"
-                    );
-
-                    themeIcon.setAttribute(
-                        "src",
-                        "https://www.svgrepo.com/show/532875/moon.svg"
-                    );
-
-                }
-
-            }
-        );
-
-
-        const savedTheme =
-            localStorage.getItem("signupDark");
-
-
-        if (savedTheme === "true") {
-
-            document.body.classList.add(
-                "dark-mode"
-            );
-
-            themeIcon.setAttribute(
-                "src",
-                "https://www.svgrepo.com/show/532889/sun.svg"
-            );
-
-        }
-
+       
 
     </script>
 

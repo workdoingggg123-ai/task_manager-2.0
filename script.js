@@ -434,30 +434,29 @@ function applyPriorityFilter() {
     let sort = sortBtn.value.toLowerCase();
 
     let task_parent = document.querySelectorAll(".all-tasks");
-
+  let visible_empty = 0; 
 
     task_parent.forEach(task => {
 
-        let priority = task
-            .querySelector(".user_choice")
-            .childNodes[0]
-            .textContent
-            .trim()
-            .toLowerCase();
+        let priority = task.querySelector(".user_choice").textContent.trim().toLowerCase();
+     
 
-
-        if (sort === "" || priority === sort) {
-
+        if (sort == "" || priority == sort) {
             task.style.display = "";
-
+            visible_empty++; 
+           
         }
 
         else {
-
             task.style.display = "none";
-            empty_text.textContent = "No Task Found"
-            task_coin.append(empty_text)
+        }
 
+        if(visible_empty===0){
+            task_coin.append(empty_text);
+            empty_text.style.display = ""
+        }
+        else{
+            empty_text.style.display = "none"
         }
 
     });
