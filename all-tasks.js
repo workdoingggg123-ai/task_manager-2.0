@@ -1,7 +1,7 @@
 
- let all_user_tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    let taskContainer = document.querySelector("#taskContainer");
-    let empty_text = document.querySelector(".empty")
+let all_user_tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let taskContainer = document.querySelector("#taskContainer");
+let empty_text = document.querySelector(".empty")
 let back_btn = document.querySelector(".back-btn")
 let all_tasks = document.querySelector("#total_h2")
 let body= document.querySelector("body")
@@ -10,7 +10,7 @@ back_btn.addEventListener("click" , ()=>{
     window.location.href = "main.html"
 })
 
-console.log(all_user_tasks)
+
 function formatDateTime(dateTime) {
 
     if (!dateTime) {
@@ -191,9 +191,5 @@ function loadTasks(){
    
 
 
-// ==========================================================
-// RUN LOCAL STORAGE LOAD
-// ==========================================================
 
-loadTasks();
-
+ loadTasks();

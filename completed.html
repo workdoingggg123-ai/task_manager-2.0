@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completed Tasks</title>
+</head>
+<style>
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #6c63ff;
+    --primary-light: #eeecff;
+    --background: #f6f7fb;
+    --card-bg: #ffffff;
+    --text: #25263a;
+    --muted: #85879a;
+    --border: #ececf3;
+    --success: #16a779;
+    --header-bg: #fafaff;
+    --hover-bg: #f7f6ff;
+}
+
+body {
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 35px 20px;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* DARK MODE */
+body.dark-mode {
+    --background: #11131c;
+    --card-bg: #1b1e2b;
+    --text: #f1f2f9;
+    --muted: #a0a4b8;
+    --border: #303447;
+    --primary-light: #302c52;
+    --header-bg: #222536;
+    --hover-bg: #25283a;
+}
+
+/* MAIN */
+main {
+    max-width: 1150px;
+    margin: auto;
+}
+
+/* TOP HEADER */
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.top h1 {
+    font-size: 30px;
+    font-weight: 750;
+    letter-spacing: -0.8px;
+    color: var(--text);
+}
+
+.back-btn {
+    padding: 11px 19px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card-bg);
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.back-btn:hover {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+/* SUMMARY CARD */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 28px;
+    box-shadow: 0 5px 20px rgba(35, 35, 70, 0.04);
+}
+
+.task-status {
+    display: flex;
+    align-items: center;
+}
+
+.task-bars {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.task-bars img {
+    width: 64px;
+    height: 64px;
+    padding: 15px;
+    border-radius: 16px;
+    background: var(--primary-light);
+    filter: invert(39%) sepia(58%) saturate(1928%)
+        hue-rotate(221deg) brightness(102%) contrast(101%);
+}
+
+.total-task h3 {
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.total-task h2 {
+    color: var(--success);
+    font-size: 34px;
+    font-weight: 750;
+    margin-bottom: 5px;
+}
+
+.total-task p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* TASK LIST CARD */
+.display-task {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(35, 35, 70, 0.04);
+}
+
+/* COLUMN HEADERS */
+.header {
+    display: grid;
+    grid-template-columns: 1.1fr 2fr 1fr 1.5fr 1fr;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 25px;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.header h4 {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+/* TASK CONTAINER */
+.tasks {
+    width: 100%;
+}
+
+/* ACTUAL TASK ROW - MATCHES YOUR JS */
+.task {
+    display: grid;
+    grid-template-columns: 1.1fr 2fr 1fr 1.5fr 1fr;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    transition: background 0.2s ease;
+    animation: taskAppear 0.3s ease;
+}
+
+.task:last-child {
+    border-bottom: none;
+}
+
+.task:hover {
+    background: var(--hover-bg);
+}
+
+/* TASK TEXT */
+.user-name,
+.task-name,
+.user_choice,
+.task-time {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+}
+
+.user-name {
+    font-weight: 650;
+    color: var(--text);
+}
+
+.task-name {
+    color: var(--text);
+}
+
+.task-time {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* PRIORITY */
+.user_choice {
+    width: fit-content;
+    padding: 6px 11px;
+    border-radius: 20px;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 650;
+}
+
+/* COMPLETION STATUS */
+.user_action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--success);
+    font-size: 12px;
+    font-weight: 650;
+    white-space: nowrap;
+}
+
+.complete-task {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.complete-task svg {
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+}
+
+.img_que {
+    width: 23px;
+    height: 23px;
+    flex-shrink: 0;
+}
+
+/* COMPLETED ROW */
+.task.completed .user_action {
+    color: var(--success);
+}
+
+/* INCOMPLETE ROW */
+.task.Not-completed .user_action {
+    color: #d99a23;
+}
+
+/* EMPTY MESSAGE */
+.empty {
+    padding: 55px 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ANIMATION */
+@keyframes taskAppear {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+    body {
+        padding: 25px 15px;
+    }
+
+    .header,
+    .task {
+        grid-template-columns: 1fr 1.5fr 0.9fr 1.3fr 0.9fr;
+        gap: 10px;
+        padding: 16px;
+    }
+
+    .header h4 {
+        font-size: 10px;
+    }
+
+    .task {
+        font-size: 12px;
+    }
+
+    .user_action {
+        font-size: 11px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    .top {
+        margin-bottom: 22px;
+    }
+
+    .top h1 {
+        font-size: 22px;
+    }
+
+    .back-btn {
+        padding: 9px 12px;
+        font-size: 12px;
+    }
+
+    .card {
+        padding: 18px;
+        margin-bottom: 20px;
+    }
+
+    .task-bars {
+        gap: 14px;
+    }
+
+    .task-bars img {
+        width: 52px;
+        height: 52px;
+        padding: 12px;
+    }
+
+    .total-task h2 {
+        font-size: 28px;
+    }
+
+    .display-task {
+        overflow-x: auto;
+    }
+
+    .header,
+    .task {
+        min-width: 680px;
+        grid-template-columns: 110px 180px 95px 150px 100px;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .header h4 {
+        font-size: 10px;
+    }
+
+    .task {
+        font-size: 12px;
+    }
+
+    .empty {
+        min-width: 250px;
+        padding: 40px 15px;
+    }
+}
+
+
+</style>
+
+
+<body>
+     <main>
+
+        <div class="top">
+            <h1>Completed Tasks</h1>
+
+            <button class="back-btn">
+                ← Back
+            </button>
+        </div>
+<section class="card">
+        <div class="task-status">
+            <div class="task-bars">
+                <img src="https://www.svgrepo.com/show/502401/task.svg" alt="img">
+                <div class="total-task">
+                    <h3>Completed task</h3>
+                    <h2 id = "total_h2">0</h2>
+                    <p id="all_assign">All assign tasks  = </p>
+                </div>
+            </div>
+            </div>
+        </section>
+
+
+        <section class="display-task">
+
+            <div class="header">
+                <h4>Name</h4>
+                <h4>Task Name</h4>
+                <h4>Priority</h4>
+                <h4>Time</h4>
+            </div>
+
+
+            <div class="empty">
+            
+            </div>
+
+
+            <div class="tasks" id="taskContainer"></div>
+
+        </section>
+
+    </main>
+</body>
+<script >
+  let all_user_tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let taskContainer = document.querySelector("#taskContainer");
+let empty_text = document.querySelector(".empty")
+let back_btn = document.querySelector(".back-btn")
+let all_tasks = document.querySelector("#total_h2")
+let all_assign = document.querySelector("#all_assign")
+let body= document.querySelector("body")
+let dark = localStorage.getItem("dark");
+back_btn.addEventListener("click" , ()=>{
+    window.location.href = "main.html"
+})
+
+
+
+function formatDateTime(dateTime) {
+
+    if (!dateTime) {
+        return "Not Scheduled";
+    }
+
+    let date = new Date(dateTime);
+
+    return date.toLocaleString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true
+    });
+}
+
+
+
+
+function apply_dark(){
+    
+    if(dark === "true"){
+         body.classList.add("dark-mode");
+    }
+}
+
+apply_dark();
+
+
+function loadTasks() {
+   
+    taskContainer.innerHTML = "";
+
+   
+    let completedTasks = all_user_tasks.filter(
+        task => task.completed === true
+    );
+
+ 
+    completedTasks.forEach(task => {
+        let user_tasks = document.createElement("div");
+        user_tasks.classList.add("task", "completed");
+
+        user_tasks.dataset.id = task.id;
+
+     
+        let info_name = document.createElement("div");
+        info_name.classList.add("user-name");
+        info_name.textContent = task.name || "Unknown";
+
+     
+        let info_task = document.createElement("div");
+        info_task.classList.add("task-name");
+        info_task.textContent = task.task || "Untitled task";
+
+        let user_choice = document.createElement("div");
+        user_choice.classList.add("user_choice");
+        user_choice.textContent = task.priority || "Normal";
+
+       
+        let info_time = document.createElement("div");
+        info_time.classList.add("task-time");
+        info_time.textContent = formatDateTime(task.time);
+
+        
+        let action = document.createElement("div");
+        action.classList.add("user_action");
+        action.textContent = "Completed";
+
+       
+        let img = document.createElement("div");
+        img.classList.add("complete-task");
+
+        img.innerHTML = `
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 122.88 122.88"
+                width="25"
+                height="25"
+                aria-label="Completed"
+            >
+                <circle cx="61.44" cy="61.44" r="61.44"
+                    fill="#00a912"/>
+                <path
+                    d="M42.37 51.68 53.26 62 79 35.87
+                    c2.13-2.16 3.47-3.9 6.1-1.19l8.53 8.74
+                    c2.8 2.77 2.66 4.4 0 7L58.14 85.34
+                    c-5.58 5.46-4.61 5.79-10.26.19L28 65.77
+                    c-1.18-1.28-1.05-2.57.24-3.84l9.9-10.27
+                    c1.5-1.58 2.7-1.44 4.22 0Z"
+                    fill="#fff"
+                />
+            </svg>
+        `;
+
+        action.append(img);
+
+        // Add all columns to the task row
+        user_tasks.append(
+            info_name,
+            info_task,
+            user_choice,
+            info_time,
+            action
+        );
+
+        taskContainer.append(user_tasks);
+    });
+
+    
+    all_tasks.textContent = completedTasks.length;
+
+    all_assign.textContent =
+        `All Assign Tasks = ${all_user_tasks.length}`;
+
+    
+    if (completedTasks.length === 0) {
+        empty_text.textContent = "No completed tasks yet.";
+        taskContainer.append(empty_text);
+    } else {
+        empty_text.remove();
+    }
+}
+
+loadTasks();
+
+
+</script>
+</html>

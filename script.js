@@ -73,6 +73,8 @@ function formatDateTime(dateTime) {
 
 function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
+    
+    
 }
 
 
@@ -316,6 +318,8 @@ task_coin.addEventListener("click", (e) => {
        
         
         saveTasks();
+        updateDue();
+        update_head();
 
         remove_item.remove();
 
@@ -323,7 +327,6 @@ task_coin.addEventListener("click", (e) => {
 
         let card_len = task_coin.querySelector(".all-tasks");
 
-        console.log(card_len);
 
         if (card_len === null) {
             task_coin.append(empty_text);
@@ -348,6 +351,8 @@ task_coin.addEventListener("click", (e) => {
             task.completed = card.classList.contains("completed");
 
             saveTasks();
+            updateDue();
+            update_head();
 
         }
 
@@ -360,8 +365,7 @@ task_coin.addEventListener("click", (e) => {
             complete_task--;
         }
 
-        update_head();
-        updateDue();
+      
     }
 
 });
@@ -533,6 +537,7 @@ function update_head() {
     const p_comp = document.querySelector("#comp_p")
     const progress_pending = document.querySelector("#progress-pending")
     const pending_progress = document.querySelector("#progress-due");
+    
     const priot = document.querySelector("#progress-priority")
 
    p_comp.textContent = card_len.length === 0 ? "0%" : Math.floor((complete_task / card_len.length) * 100) + "%";
@@ -547,6 +552,7 @@ function update_head() {
    
 
 let completed = tasks.filter(task => task.completed).length;
+localStorage.setItem("completed" , completed)
 
 let pending = total - completed;
     
