@@ -14,23 +14,15 @@ let noBtn = document.querySelector("#noBtn");
 let dark_button = document.querySelector("#dark_mode");
 let body = document.querySelector("body");
 
-let complete_task = 0;
-let pending=0;
-let due_task = 0;
-
 let total_h2 = document.querySelector("#total_h2");
 let comp_h2 = document.querySelector("#complete_h2");
 let pending_h2 = document.querySelector("#pending_h2");
 let priority = document.querySelector("#priority_h2");
 let due_h2 = document.querySelector("#due_h2");
 let button_search = document.querySelector(".button-search");
-let high_prio = 0;
 
 
-// ======================================
-//  Clock quweries
-// =========================================
-
+let due_task = 0 ;
 
 let hourHand = document.querySelector(".hour");
 let minuteHand = document.querySelector(".minute");
@@ -40,13 +32,9 @@ let calender_time = document.querySelector("#time");
 
 
 
-// ==========================================================
-// LOCAL STORAGE
-// ==========================================================
-
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
  let dark_theam  = JSON.parse(localStorage.getItem("dark"));
-let logout  = document.querySelector(".log-out")
+let logout  = document.querySelector("#logout")
 
 logout.addEventListener("click" , ()=>{
     window.location.href = "index.html";
@@ -188,10 +176,7 @@ btn.addEventListener("click", () => {
         let user_choice = document.createElement("div");
         user_choice.classList.add("user_choice");
         user_choice.textContent = choice.value;
-        if (choice.value == "High") {
-            high_prio++
-        }
-    
+       
         let info_time = document.createElement("div");
         info_time.classList.add("task-time");
 
@@ -280,11 +265,6 @@ yesBtn.addEventListener("click", () => {
 
     user_name.focus();
 
-    complete_task = 0;
-    pending = 0;
-    high_prio = 0
-    due_h2= 0 ; 
-
     // Clear Local Storage
     tasks = [];
     localStorage.removeItem("tasks");
@@ -309,10 +289,7 @@ task_coin.addEventListener("click", (e) => {
          
         let task = tasks.find(task => task.id === id);
 
-    if (task && task.priority === "High") {
-        high_prio--;
-    }
-
+   
         
         tasks = tasks.filter(task => task.id !== id);
        
@@ -357,13 +334,7 @@ task_coin.addEventListener("click", (e) => {
         }
 
 
-        if (card.classList.contains("completed")) {
-            complete_task++;
-        }
-
-        else {
-            complete_task--;
-        }
+      
 
       
     }
@@ -527,43 +498,38 @@ open_close.forEach(button => {
 
 
 function update_head() {
-
-    let card_len = task_coin.querySelectorAll(".all-tasks");
-
-   
+    let card_len =  tasks.length;
+     let complete = tasks.filter((com_task) => {
+    return com_task.completed === true}).length;
+    
+    let high_prioroty = tasks.filter((high_prio)=>{
+        return high_prio.priority == "High"
+    }).length
 
     const progress_comp = document.querySelector("#progress-complete")
     const p_comp = document.querySelector("#comp_p")
     const progress_pending = document.querySelector("#progress-pending")
     const pending_progress = document.querySelector("#progress-due");
-    
     const priot = document.querySelector("#progress-priority")
 
-   p_comp.textContent = card_len.length === 0 ? "0%" : Math.floor((complete_task / card_len.length) * 100) + "%";
+   p_comp.textContent = card_len === 0 ? "0%" : Math.floor((complete / card_len) * 100) + "%";
     if (p_comp.textContent === "100%") {
-        p_comp.innerHTML = "100%✌️🙌 <b>Keep Doing Great</b>"
+        p_comp.innerHTML = "100% 🙌 <b>Keep Doing Great</b>"
     }
     
     
 
-    let total = tasks.length;
-     localStorage.setItem("total_tasks" ,total)
-   
-
-let completed = tasks.filter(task => task.completed).length;
-localStorage.setItem("completed" , completed)
-
-let pending = total - completed;
+     localStorage.setItem("total_tasks" ,card_len)
+     localStorage.setItem("completed" , complete)
+     let pending = card_len - complete
     
-    progress_comp.style.setProperty("--progress-colour" , `${((complete_task/card_len.length)*100)}%`)
-    progress_pending.style.setProperty("--progress-colour" , `${(pending/card_len.length)*100}%`)
-    pending_progress.style.setProperty("--progress-colour" , `${(due_task/card_len.length)*100}%`)
-
-    
-    priot.style.setProperty("--progress-colour" , `${(high_prio/card_len.length)*100}%`)
-    priority.textContent = high_prio;
-    comp_h2.textContent = completed;
- total_h2.textContent = total;
+    progress_comp.style.setProperty("--progress-colour" , `${((complete/card_len)*100)}%`)
+    progress_pending.style.setProperty("--progress-colour" , `${(pending/card_len)*100}%`)
+    pending_progress.style.setProperty("--progress-colour" , `${(due_task/card_len)*100}%`)
+    priot.style.setProperty("--progress-colour" , `${(high_prioroty/card_len)*100}%`)
+    priority.textContent = high_prioroty;
+    comp_h2.textContent = complete;
+ total_h2.textContent = card_len;
     pending_h2.textContent = pending
 
 }
@@ -598,10 +564,7 @@ let pending = total - completed;
     
         if (task.completed) {
 
-            user_tasks.classList.add("completed");
-
-            complete_task++;
-          
+            user_tasks.classList.add("completed");          
 
         }
 
@@ -700,11 +663,7 @@ let pending = total - completed;
 
         user_choice.textContent = task.priority;
 
-        if (task.priority =="High") {
-            high_prio++
-        }
-
-
+     
 
         let info_time = document.createElement("div");
 
@@ -785,9 +744,7 @@ function clock() {
     
 }
 function updateDue() {
-
-    due_task = 0;
-
+    due_task = 0; 
     let now = new Date();
 
     tasks.forEach(task => {
@@ -807,6 +764,7 @@ function updateDue() {
         if (difference <= 0) {
 
             due_task++;
+            
 
         } 
         else {
