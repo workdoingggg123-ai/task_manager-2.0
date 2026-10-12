@@ -1,56 +1,56 @@
-# TaskNexus 🚀
+# TaskNexux 🚀
 
-**A simple, interactive task management web application built to organize tasks, manage priorities, and track completed work.**
+**Your tasks. Your priorities. Your progress.**
 
-🔗 **Live Demo:** https://tasknexus.vercel.app/
+TaskNexux is a web-based task management application built to help users organize daily tasks, manage priorities, and keep track of completed work through a clean, interactive interface.
 
-## About the Project
+🌐 **Live Application:** https://tasknexux.vercel.app/
 
-TaskNexus is a task management project designed to make everyday task organization easier. It provides a dedicated interface for managing tasks, checking completed work, and keeping important activities organized.
+## ✨ Features
 
-Built using **HTML, CSS, and JavaScript**, the project focuses on practical frontend development, DOM manipulation, browser storage, and interactive user experiences.
+- 🔐 **Login & Sign Up** — Dedicated pages for the user access interface.
+- 📝 **Task Management** — Organize daily tasks in one place.
+- 🎯 **Priority Filtering** — Filter tasks based on their assigned priority.
+- ✅ **Completed Tasks** — Keep track of finished tasks separately.
+- 📊 **Task Tracking** — View task counts and completion information.
+- 🌙 **Dark Mode** — Switch between light and dark themes.
+- 💾 **LocalStorage** — Persist supported task data and preferences in the browser.
+- 📱 **Responsive Design** — An interface designed for different screen sizes.
 
-## Features
+## 🛠️ Tech Stack
 
-- **Task Management** — Organize and manage your tasks.
-- **Priority Filtering** — Filter tasks according to their priority.
-- **Task Completion** — Track completed tasks separately from pending work.
-- **Task Statistics** — Display task counts and completion information.
-- **User Login & Signup** — Dedicated pages for user registration and login.
-- **Dark Mode** — Switch between light and dark themes.
-- **Persistent Storage** — Save supported task data and user preferences using browser LocalStorage.
-- **Responsive UI** — A user-friendly interface designed for different screen sizes.
+- HTML5
+- CSS3
+- JavaScript (Vanilla JavaScript)
+- Browser LocalStorage
+- Vercel
 
-## Built With
+## 💡 About the Project
 
-- **HTML5** — Application structure
-- **CSS3** — Styling, layouts, and responsive design
-- **JavaScript** — Task operations, filtering, event handling, and DOM manipulation
-- **LocalStorage** — Browser-side data persistence
-- **Vercel** — Deployment
+TaskNexux is a hands-on frontend development project focused on building a functional, multi-page task manager without relying on a frontend framework.
 
-## What I Learned
+The project brings together interactive UI design, JavaScript logic, task filtering, data persistence, and user-focused functionality in one application.
 
-While building TaskNexus, I worked with JavaScript arrays and objects, LocalStorage, DOM manipulation, event handling, task filtering, conditional rendering, and multi-page navigation. I also gained practical experience debugging interface issues and deploying a frontend project.
+## 🚀 Getting Started
 
-## Run Locally
+Clone the repository:
 
 ```bash
 git clone https://github.com/workdoingggg123-ai/task_manager-2.0.git
 cd task_manager-2.0
 ```
 
-Open the project's HTML entry page in your browser or use the Live Server extension in VS Code.
+Open the HTML entry page in your browser or use the Live Server extension in VS Code.
 
-## Developer
+## 👨‍💻 Developer
 
-**Meet Patel**  
-Computer Science Engineering Student | Web Development Learner
+**Meet Patel**
 
-- GitHub: https://github.com/workdoingggg123-ai
-- Project: https://tasknexus.vercel.app/
-- Repository: https://github.com/workdoingggg123-ai/task_manager-2.0
+Computer Science Engineering Student | Web Development
+
+- GitHub: [workdoingggg123-ai](https://github.com/workdoingggg123-ai)
+- Live Project: [TaskNexux](https://tasknexux.vercel.app/)
 
 ---
 
-*TaskNexus — Organize your tasks. Focus on what matters.*
+*Built with HTML, CSS, and JavaScript — one task at a time.*
