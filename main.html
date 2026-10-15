@@ -109,14 +109,14 @@
    </section>
 
 
-   <aside>
+   <aside id="aside">
     <div class="aside-head"> 
     <img class="open-close" src="https://www.svgrepo.com/show/495758/task.svg" alt="">
    <h2>Student Task Board</h2></div>
 
    <div class="main-aside">
     <ol>
-        <li>
+        <li id  = "DASHBOARD">
             <img src="https://www.svgrepo.com/show/520684/dashboard.svg" alt="img">
             <p>Dashboard</p>
         </li>
@@ -131,12 +131,6 @@
         <li id="PRIORITY">
             <img src="https://www.svgrepo.com/show/426823/flagred.svg" alt="img">
              <p>High Priority</p></li>
-        <li id  = "CALENDER">
-             <img src="https://www.svgrepo.com/show/357437/calender.svg" alt="img">
-            <p>Calender</p></li>
-        <li id="STATICS">
-            <img src = "https://www.svgrepo.com/show/283389/graphs-economy.svg" alt="img">
-            <p>Statics</p></li>
     </ol>
    </div>
 
@@ -161,29 +155,28 @@
     <p id="date">Thursday, 15 May 2025</p>
 
 </div>
-<div class="calendar-box">
+ 
+<div class="motivational-card">
+    <div class="card-inner">
 
-    <div class="calendar-header">
-        <button id="prev">‹</button>
+        
+        <div class="card-front">
+            <h2>✨ Daily Motivation</h2>
+            <p>Hover to reveal your motivation!</p>
+        </div>
 
-        <h3 id="month">September 2026</h3>
+    
+        <div class="card-back">
+            <h2>🚀 Keep Going!</h2>
+            <p>
+                Small steps every day lead to big results.
+                Stay consistent and achieve your goals!
+            </p>
+        </div>
 
-        <button id="next">›</button>
     </div>
-
-    <div class="calendar-days">
-        <span>Sun</span>
-        <span>Mon</span>
-        <span>Tue</span>
-        <span>Wed</span>
-        <span>Thu</span>
-        <span>Fri</span>
-        <span>Sat</span>
-    </div>
-
-    <div class="calendar-dates" id="dates"></div>
-
 </div>
+
    
    </aside>
    
@@ -226,7 +219,7 @@
 
     <input type="text" id="search" placeholder="Search student or task"> 
     <button class="button-search">Search</button>
-
+    <label for="sortBtn"></label>
     <select id="sortBtn">
        <option value="" selected >Search Priority</option>
       

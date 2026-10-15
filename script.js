@@ -479,22 +479,26 @@ let aside = document.querySelector("aside");
 let new_tasks = document.querySelector(".new-tasks");
 
 
-open_close.forEach(button => {
 
+
+open_close.forEach(button => {
     button.addEventListener("click", () => {
 
         aside.classList.toggle("hide");
 
         welcome_sec.classList.toggle("hide");
-
         task_sec.classList.toggle("hide");
-
         new_tasks.classList.toggle("hide");
 
+        
+        if (aside.classList.contains("hide")) {
+            document.body.classList.add("freeze");
+        } else {
+            document.body.classList.remove("freeze");
+        }
+
     });
-
 });
-
 
 
 function update_head() {
@@ -744,7 +748,7 @@ function clock() {
     
 }
 function updateDue() {
-    due_task = 0; 
+    due_task = 0;   
     let now = new Date();
 
     tasks.forEach(task => {

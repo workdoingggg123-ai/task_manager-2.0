@@ -42,16 +42,37 @@ body.dark-mode .greeting p {
     color: #94a3b8;
 }
 
+
+body.dark-mode .motivational-card .card-front {
+    background: #111827;
+    color: #f9fafb;
+    border-color: #374151;
+}
+
+body.dark-mode .motivational-card .card-back {
+    background: linear-gradient(135deg, #1e1b4b, #312e81);
+    color: #f9fafb;
+    border-color: #4f46e5;
+}
+
+
+body.dark-mode .motivational-card .card-front h2,
+body.dark-mode .motivational-card .card-back h2 {
+    color: #a78bfa;
+}
+body.dark-mode .motivational-card .card-front p,
+body.dark-mode .motivational-card .card-back p {
+    color: #d1d5db;
+}
+
+
 /* Sidebar */
 body.dark-mode aside {
     background: #16191f;
     color: #f1f5f9;
 }
 
-body.dark-mode aside:hover{
-    background-color: #2a303a;
-    
-}
+
 /* Task status cards */
 body.dark-mode .task-bars {
     background: #181c23;
@@ -326,12 +347,21 @@ aside {
 
 }
 
+
+ol{
+    cursor: pointer;
+}
 aside.hide {
     transform: translateX(0);
 }
 
+
+
 .display-task.hide , .Welcome.hide , .new-tasks.hide{
    filter: blur(2px);
+   pointer-events: none;
+   user-select: none;
+   
 }
 
 .main-aside li {
@@ -385,88 +415,7 @@ aside.hide {
     position: relative;
 }
 
-.calendar-box {
-    width: 100%;
-    max-width: 420px;
-    padding: 25px;
 
-    background: #ffffff;
-    border: 1px solid #e8eaf0;
-    border-radius: 20px;
-
-    box-shadow: 0 10px 30px rgba(30, 41, 59, 0.08);
-}
-
-.calendar-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 25px;
-}
-
-.calendar-header h3 {
-    font-size: 18px;
-    color: #111827;
-}
-
-.calendar-header button {
-    width: 35px;
-    height: 35px;
-
-    border: none;
-    border-radius: 50%;
-
-    background: #eeeaff;
-    color: #633de0;
-
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.calendar-days,
-.calendar-dates {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
-    text-align: center;
-}
-
-.calendar-days span {
-    font-size: 12px;
-    font-weight: 600;
-    color: #94a3b8;
-}
-
-.calendar-dates {
-    margin-top: 15px;
-}
-
-.calendar-dates span {
-    height: 38px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 10px;
-
-    font-size: 13px;
-    color: #374151;
-
-    cursor: pointer;
-}
-
-.calendar-dates span:hover {
-    background: #eeeaff;
-    color: #633de0;
-}
-
-.calendar-dates .today {
-    background: #633de0;
-    color: white;
-    font-weight: 700;
-}
 
 /* Numbers */
 .number {
@@ -1008,10 +957,77 @@ body {
 }
 
 
-/* =========================
-   LARGE TABLETS / LAPTOPS
-   1200px and below
-========================= */
+
+.motivational-card {
+    width: 100%;
+    height: 20em;
+    margin: 10px 0;
+    perspective: 1000px;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: 30px;
+}
+
+.motivational-card:hover .card-inner {
+    transform: rotateY(-180deg);
+}
+
+.card-front,
+.card-back {
+    width: 100%;
+    height: 100%;
+  position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 25px;
+    border-radius: 30px;
+    background-color:#ced2d8;
+    color: rgb(19, 18, 18);
+    backface-visibility:hidden;
+}
+
+
+.card-front {
+    background: #F3F4F6;
+    color: #111827;
+    border: 1px solid #D1D5DB;
+}
+
+
+.card-back {
+    background: linear-gradient(135deg, #E0E7FF, #C7D2FE);
+    color: #111827;
+    transform: rotateY(180deg);
+}
+
+.card-front h2,
+.card-back h2 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: #312E81;
+}
+
+.card-front p,
+.card-back p {
+     color: #374151;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+
 
 @media (max-width: 1200px) {
 

@@ -84,6 +84,29 @@ main {
     transition: 0.25s ease;
 }
 
+.display-task::-webkit-scrollbar {
+    height: 8px;
+}
+
+.display-task::-webkit-scrollbar-track {
+    background: #e5e7eb;
+    border-radius: 10px;
+}
+
+.display-task::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #6c63ff, #a78bfa);
+    border-radius: 10px;
+}
+
+.display-task::-webkit-scrollbar-thumb:hover {
+    background: #5145cd;
+}
+
+
+.display-task {
+    scrollbar-width: thin;
+    scrollbar-color: #4d4d53 #e5e7eb;
+}
 .back-btn:hover {
     background: var(--primary);
     color: #fff;
@@ -118,8 +141,7 @@ main {
     padding: 15px;
     border-radius: 16px;
     background: var(--primary-light);
-    filter: invert(39%) sepia(58%) saturate(1928%)
-        hue-rotate(221deg) brightness(102%) contrast(101%);
+  
 }
 
 .total-task h3 {
